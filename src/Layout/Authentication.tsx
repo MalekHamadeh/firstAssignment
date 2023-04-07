@@ -10,7 +10,7 @@ import {
   HeaderWrapper,
   StyledLogo,
 } from "../Components/Authentication/StyledAuthentication";
-// import { SignUpProvider } from "../../Utils/SignUpContext/SignUpContext";
+import { SignUpProvider } from "../Context/SignUpContext";
 // import { PasswordProvider } from "../../Utils/PasswordContext/PasswordContext";
 
 const Authentication: FC = () => {
@@ -45,13 +45,13 @@ const Authentication: FC = () => {
             // successfulSignUp={successfulSignUp}
           />
         ) : screen === "SignUp" ? (
-          //   <SignUpProvider>
-          <Signup
-          // onClick={handleScreens}
-          // successfulSignUp={handleSuccessfulSignUp}
-          />
+          <SignUpProvider>
+            <Signup
+              onClick={handleScreens}
+              // successfulSignUp={handleSuccessfulSignUp}
+            />
+          </SignUpProvider>
         ) : (
-          //   </SignUpProvider>
           //   <PasswordProvider>
           //     <ForgotPassword
           //       onClick={handleScreens}

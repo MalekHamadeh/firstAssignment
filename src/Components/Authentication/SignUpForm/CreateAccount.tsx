@@ -1,7 +1,17 @@
 import React from "react";
+import { GridContainer, GridItem, StyledInput } from "../StyledAuthentication";
 
 const CreateAccount = () => {
-  return <div>CreateAccount</div>;
+  return (
+    <GridContainer direction='column' gap={1}>
+      <GridItem xs={1}>
+        <StyledInput placeholder='Enter Username' />
+      </GridItem>
+      <GridItem xs={1}>
+        <StyledInput placeholder='Enter password' />
+      </GridItem>
+    </GridContainer>
+  );
 };
 
 export default CreateAccount;
