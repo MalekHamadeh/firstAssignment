@@ -1,5 +1,4 @@
 import { FC, useState } from "react";
-// import ForgotPassword from "../../Components/AuthenticationComponents/ForgotPassword";
 import Login from "../Components/Authentication/Login";
 import Signup from "../Components/Authentication/SignUp";
 
@@ -13,10 +12,9 @@ import {
 import { SignUpProvider } from "../Context/SignUpContext";
 import { PasswordProvider } from "../Context/PasswordContext";
 import ForgotPassword from "../Components/Authentication/ForgotPassword";
-// import { PasswordProvider } from "../../Utils/PasswordContext/PasswordContext";
+import logo from "../Images/Logo/roundRushLogo.svg";
 
-const Authentication: FC = () => {
-  const logo: string = require("../Images/Logo/roundRushLogo.svg").default;
+const Authentication = () => {
   const [screen, setScreen] = useState<String>("Login");
   const [successfulPass, setSuccessfulPass] = useState<Boolean>(false);
   const [successfulSignUp, setSuccessfulSignUp] = useState<Boolean>(false);
