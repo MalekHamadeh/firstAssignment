@@ -11,6 +11,8 @@ import {
   StyledLogo,
 } from "../Components/Authentication/StyledAuthentication";
 import { SignUpProvider } from "../Context/SignUpContext";
+import { PasswordProvider } from "../Context/PasswordContext";
+import ForgotPassword from "../Components/Authentication/ForgotPassword";
 // import { PasswordProvider } from "../../Utils/PasswordContext/PasswordContext";
 
 const Authentication: FC = () => {
@@ -41,24 +43,23 @@ const Authentication: FC = () => {
         {screen === "Login" ? (
           <Login
             onClick={handleScreens}
-            // successfulPass={successfulPass}
-            // successfulSignUp={successfulSignUp}
+            successfulPass={successfulPass}
+            successfulSignUp={successfulSignUp}
           />
         ) : screen === "SignUp" ? (
           <SignUpProvider>
             <Signup
               onClick={handleScreens}
-              // successfulSignUp={handleSuccessfulSignUp}
+              successfulSignUp={handleSuccessfulSignUp}
             />
           </SignUpProvider>
         ) : (
-          //   <PasswordProvider>
-          //     <ForgotPassword
-          //       onClick={handleScreens}
-          //       didSucceed={handleSucceed}
-          //     />
-          //   </PasswordProvider>
-          <div>Forgot Password</div>
+          <PasswordProvider>
+            <ForgotPassword
+              onClick={handleScreens}
+              didSucceed={handleSucceed}
+            />
+          </PasswordProvider>
         )}
       </StyledPaper>
     </Outline>

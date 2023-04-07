@@ -11,16 +11,16 @@ import SignUpContext, { SignUpContextProps } from "../../Context/SignUpContext";
 
 interface SignupProps {
   onClick: (string: String) => void;
-  // successfulSignUp: Boolean;
+  successfulSignUp: (boolean: Boolean) => void;
 }
 
-const Signup = ({ onClick }: SignupProps) => {
+const Signup = ({ onClick, successfulSignUp }: SignupProps) => {
   const { title, step, setStep }: SignUpContextProps =
     useContext(SignUpContext);
 
   const goToLogin = () => {
     onClick("Login");
-    // successfulSignUp(true);
+    successfulSignUp(true);
   };
   const handleNext = () => {
     setStep(step + 1);

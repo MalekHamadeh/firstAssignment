@@ -49,6 +49,7 @@ export const StyledPaper = styled(Paper)`
 `;
 //#endregion
 
+//#region All styling for Aythentication Components
 export const GridContainer = styled(Grid).attrs({ container: true })``;
 export const GridItem = styled(Grid).attrs({ item: true })``;
 
@@ -75,12 +76,4 @@ export const StyledButton = styled(Button)<isRegesteredProps>`
     }
   }
 `;
-
-// export const StyledAlert = styled(Alert)(({ severity }) => ({
-//   width: "28vw",
-//   "&&": {
-//     color: severity === "error" ? "#fd5461" : "#29C293",
-//     background: "#f4f6fc",
-//     fontFamily: "Rubik, sans-serif",
-//   },
-// }));
+//#endregion
