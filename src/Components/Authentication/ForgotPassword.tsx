@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
   GridContainer,
   GridItem,
@@ -11,16 +11,29 @@ import PasswordContext, {
 } from "../../Context/PasswordContext";
 
 interface ForgotPasswordProps {
-  onClick: (string: String) => void;
+  onClick: (string: string) => void;
   didSucceed: (boolean: Boolean) => void;
 }
 
 const ForgotPassword = ({ onClick, didSucceed }: ForgotPasswordProps) => {
+  const [localStep, setLocalStep] = useState<number>(() => {
+    const localSteps = localStorage.getItem("step");
+    return localSteps ? +localSteps : 0;
+  });
+
   const { title, step, setStep }: PasswordContextProps =
     useContext(PasswordContext);
 
+  useEffect(() => {
+    localStorage.setItem("step", step.toString());
+    return () => {
+      localStorage.removeItem("step");
+    };
+  }, [step]);
+
   const handleNext = () => {
     setStep(step + 1);
+    setLocalStep((prev) => prev + 1);
   };
 
   const returnToLogin = () => {
@@ -41,11 +54,11 @@ const ForgotPassword = ({ onClick, didSucceed }: ForgotPasswordProps) => {
       </GridItem>
       <GridItem xs={1} />
       <GridItem xs={1}>
-        <StyledText>{title[step as keyof { 0: string; 1: string }]}</StyledText>
+        <StyledText>{title[localStep]}</StyledText>
       </GridItem>
       <GridItem xs={1} />
       <GridItem xs={1}>
-        <FormInputs from='forgot' />
+        <FormInputs from='forgot' formStep={localStep} />
       </GridItem>
       {step !== 1 && (
         <>

@@ -1,7 +1,7 @@
 import { createContext, useState, useEffect } from "react";
 
 const PasswordContext = createContext<PasswordContextProps>({
-  title: { 0: "", 1: "" },
+  title: [],
   step: 0,
   setStep: (step: number) => {},
   data: {
@@ -18,7 +18,7 @@ interface PasswordProviderProps {
 }
 
 export interface PasswordContextProps {
-  title: Title;
+  title: string[];
   step: number;
   setStep: (prev: number) => void;
   data: PasswordData;
@@ -30,18 +30,10 @@ interface PasswordData {
   email: string;
   password: string;
 }
-
-interface Title {
-  0: string;
-  1: string;
-}
 //#endregion
 
 export const PasswordProvider = ({ children }: PasswordProviderProps) => {
-  const title = {
-    0: "Enter your details below",
-    1: "Please enter your new password",
-  };
+  const title = ["Enter your details below", "Please enter your new password"];
 
   const [step, setStep] = useState(0);
 

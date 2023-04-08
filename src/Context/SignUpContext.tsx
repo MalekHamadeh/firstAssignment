@@ -1,7 +1,7 @@
 import { createContext, useState, useEffect } from "react";
 
 const SignUpContext = createContext<SignUpContextProps>({
-  title: { 0: "", 1: "", 2: "" },
+  title: [],
   step: 0,
   setStep: (step: number) => {},
   data: {
@@ -24,7 +24,7 @@ interface SignUpProviderProps {
 }
 
 export interface SignUpContextProps {
-  title: Title;
+  title: string[];
   step: number;
   setStep: (prev: number) => void;
   data: SignUpData;
@@ -43,19 +43,14 @@ interface SignUpData {
   accpetTerms: boolean;
 }
 
-interface Title {
-  0: string;
-  1: string;
-  2: string;
-}
 //#endregion
 
 export const SignUpProvider = ({ children }: SignUpProviderProps) => {
-  const title: Title = {
-    0: "Lets Validate your email first",
-    1: "Fill up your account information",
-    2: "Create your company space",
-  };
+  const title: string[] = [
+    "Lets Validate your email first",
+    "Fill up your account information",
+    "Create your company space",
+  ];
 
   const [step, setStep] = useState<number>(0);
 

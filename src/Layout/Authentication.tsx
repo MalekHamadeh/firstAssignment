@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import Login from "../Components/Authentication/Login";
 import Signup from "../Components/Authentication/SignUp";
 
@@ -15,11 +15,18 @@ import ForgotPassword from "../Components/Authentication/ForgotPassword";
 import logo from "../Images/Logo/roundRushLogo.svg";
 
 const Authentication = () => {
-  const [screen, setScreen] = useState<String>("Login");
+  const [screen, setScreen] = useState<string>(() => {
+    const savedScreen = localStorage.getItem("screen");
+    return savedScreen ? savedScreen : "Login";
+  });
   const [successfulPass, setSuccessfulPass] = useState<Boolean>(false);
   const [successfulSignUp, setSuccessfulSignUp] = useState<Boolean>(false);
 
-  const handleScreens = (string: String) => {
+  useEffect(() => {
+    localStorage.setItem("screen", screen);
+  }, [screen]);
+
+  const handleScreens = (string: string) => {
     setScreen(string);
   };
 

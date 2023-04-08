@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import FormInputs from "./FormInputs";
 import {
   GridContainer,
@@ -10,13 +10,24 @@ import {
 import SignUpContext, { SignUpContextProps } from "../../Context/SignUpContext";
 
 interface SignupProps {
-  onClick: (string: String) => void;
+  onClick: (string: string) => void;
   successfulSignUp: (boolean: Boolean) => void;
 }
 
 const Signup = ({ onClick, successfulSignUp }: SignupProps) => {
+  const [localStep, setLocalStep] = useState<number>(() => {
+    const localSteps = localStorage.getItem("step");
+    return localSteps ? +localSteps : 0;
+  });
   const { title, step, setStep }: SignUpContextProps =
     useContext(SignUpContext);
+
+  useEffect(() => {
+    localStorage.setItem("step", step.toString());
+    return () => {
+      localStorage.removeItem("step");
+    };
+  }, [step]);
 
   const goToLogin = () => {
     onClick("Login");
@@ -24,6 +35,7 @@ const Signup = ({ onClick, successfulSignUp }: SignupProps) => {
   };
   const handleNext = () => {
     setStep(step + 1);
+    setLocalStep((prev) => prev + 1);
   };
 
   return (
@@ -40,16 +52,14 @@ const Signup = ({ onClick, successfulSignUp }: SignupProps) => {
       </GridItem>
       <GridItem xs={1} />
       <GridItem xs={1}>
-        <StyledText variant='body1'>
-          {title[step as keyof { 0: string; 1: string; 2: string }]}
-        </StyledText>
+        <StyledText variant='body1'>{title[localStep]}</StyledText>
       </GridItem>
       <GridItem xs={1} />
       <GridItem xs={1}>
-        <FormInputs from='signup' />
+        <FormInputs from='signup' formStep={localStep} />
       </GridItem>
       <GridItem xs={1}>
-        {step !== 2 ? (
+        {title[localStep] !== "Create your company space" ? (
           <StyledButton variant='contained' onClick={handleNext}>
             Next
           </StyledButton>

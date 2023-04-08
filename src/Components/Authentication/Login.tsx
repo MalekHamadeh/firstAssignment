@@ -14,7 +14,7 @@ import Alert from "../Shared/Alert";
 // { onClick, successfulPass, successfulSignUp }
 
 interface LoginProps {
-  onClick: (string: String) => void;
+  onClick: (string: string) => void;
   successfulPass: Boolean;
   successfulSignUp: Boolean;
 }
