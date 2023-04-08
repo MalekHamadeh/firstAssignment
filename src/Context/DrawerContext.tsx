@@ -1,9 +1,9 @@
 import React from "react";
 import { createContext, useEffect, useState } from "react";
-import Dashboard from "../Components/Home/DrawerComponents/Dashboard";
-import PersonalBoard from "../Components/Home/DrawerComponents/PersonalBoard";
-import Settings from "../Components/Home/DrawerComponents/Settings";
-import YellowTech from "../Components/Home/DrawerComponents/YellowTech";
+import Dashboard from "../Components/Home/Dashboard/Dashboard";
+import PersonalBoard from "../Components/Home/PersonalBoard";
+import Settings from "../Components/Home/SpaceSettings/Settings";
+import YellowTech from "../Components/Home/YellowTech";
 import BrotliLogo from "../Images/Icons/brotliLogo.svg";
 import PersonalBoardIcon from "../Images/Icons/personalBoardIcon.svg";
 import HomeIcon from "../Images/Icons/homeIcon.svg";

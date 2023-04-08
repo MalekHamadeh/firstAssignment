@@ -1,5 +1,5 @@
 import React from "react";
-import Drawer from "../Components/Home/Drawer";
+import Drawer from "../Components/Home/DrawerComponents/Drawer";
 import HeroSection from "../Components/Home/HeroSection";
 import {
   DrawerWrapper,

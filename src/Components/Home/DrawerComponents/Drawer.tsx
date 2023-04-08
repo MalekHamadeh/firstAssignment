@@ -10,16 +10,16 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import smallLogo from "../../Images/Logo/SmallLogo.svg";
-import TeamIcon from "../../Images/Icons/teamIcon.svg";
+import smallLogo from "../../../Images/Logo/SmallLogo.svg";
+import TeamIcon from "../../../Images/Icons/teamIcon.svg";
 import { ExpandLess, ExpandMore } from "@mui/icons-material";
-import MenuIcon from "../../Images/Icons/menuIcon.svg";
-import InfoIcon from "../../Images/Icons/infoIcon.svg";
-import LogOutIcon from "../../Images/Icons/logoutIcon.svg";
+import MenuIcon from "../../../Images/Icons/menuIcon.svg";
+import InfoIcon from "../../../Images/Icons/infoIcon.svg";
+import LogOutIcon from "../../../Images/Icons/logoutIcon.svg";
 import { Icon } from "@mui/material";
-import { DrawerContextProps } from "../../Context/DrawerContext";
-import DrawerContext, { subItems } from "../../Context/DrawerContext";
-import NeededDrawerList from "./DrawerComponents/NeededDraweList";
+import { DrawerContextProps } from "../../../Context/DrawerContext";
+import DrawerContext, { subItems } from "../../../Context/DrawerContext";
+import NeededDrawerList from "./NeededDraweList";
 
 const drawerWidth = 240;
 
