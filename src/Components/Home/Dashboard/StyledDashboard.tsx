@@ -161,8 +161,6 @@ export const ProjectTitle = styled(Typography).attrs({ variant: "h2" })`
 
 export const ContentGridItem = styled(Grid).attrs({ item: true, xs: 12 })`
   height: 90%;
-  padding-top: 3rem;
-  padding-left: 3rem;
 `;
 
 export const ContentWrapper = styled.div`
@@ -173,14 +171,18 @@ export const ContentWrapper = styled.div`
 export const ContentGrid = styled(Grid).attrs({
   container: true,
   columns: 10,
+  rowSpacing: 1,
 })`
   && {
     flex-direction: row;
     height: 100%;
+    width: 90%;
   }
 `;
 
-export const ContentItem = styled(Grid).attrs({ item: true, xs: 2 })``;
+export const ContentItem = styled(Grid).attrs({ item: true, xs: 2 })`
+  display: flex;
+`;
 
 export const ContentItemWrapper = styled.div`
   width: 100%;

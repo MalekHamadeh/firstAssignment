@@ -20,6 +20,7 @@ import {
   ContentItemWrapper,
 } from "./StyledDashboard";
 import WelcomPic from "../../../Images/Pictures/WelcomePic.svg";
+import ProjectIcon from "../../Shared/ProjectIcon";
 
 const Left = () => {
   return (
@@ -52,34 +53,39 @@ const Left = () => {
             <ContentWrapper>
               <ContentGrid>
                 <ContentItem>
-                  <ContentItemWrapper>1</ContentItemWrapper>
+                  <ContentItemWrapper>
+                    <ProjectIcon />
+                  </ContentItemWrapper>
                 </ContentItem>
                 <ContentItem>
-                  <ContentItemWrapper>1</ContentItemWrapper>
+                  <ContentItemWrapper>
+                    <ProjectIcon />
+                  </ContentItemWrapper>
                 </ContentItem>
                 <ContentItem>
-                  <ContentItemWrapper>1</ContentItemWrapper>
+                  <ContentItemWrapper>
+                    <ProjectIcon />
+                  </ContentItemWrapper>
                 </ContentItem>
                 <ContentItem>
-                  <ContentItemWrapper>1</ContentItemWrapper>
+                  <ContentItemWrapper>
+                    <ProjectIcon />
+                  </ContentItemWrapper>
                 </ContentItem>
                 <ContentItem>
-                  <ContentItemWrapper>1</ContentItemWrapper>
+                  <ContentItemWrapper>
+                    <ProjectIcon />
+                  </ContentItemWrapper>
                 </ContentItem>
                 <ContentItem>
-                  <ContentItemWrapper>1</ContentItemWrapper>
+                  <ContentItemWrapper>
+                    <ProjectIcon />
+                  </ContentItemWrapper>
                 </ContentItem>
                 <ContentItem>
-                  <ContentItemWrapper>1</ContentItemWrapper>
-                </ContentItem>
-                <ContentItem>
-                  <ContentItemWrapper>1</ContentItemWrapper>
-                </ContentItem>
-                <ContentItem>
-                  <ContentItemWrapper>1</ContentItemWrapper>
-                </ContentItem>
-                <ContentItem>
-                  <ContentItemWrapper>1</ContentItemWrapper>
+                  <ContentItemWrapper>
+                    <ProjectIcon />
+                  </ContentItemWrapper>
                 </ContentItem>
               </ContentGrid>
             </ContentWrapper>
