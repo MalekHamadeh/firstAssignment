@@ -1,7 +1,7 @@
 import React from "react";
-
+import { RightWrapper } from "./StyledDashboard";
 const Right = () => {
-  return <div>Right</div>;
+  return <RightWrapper>Right</RightWrapper>;
 };
 
 export default Right;

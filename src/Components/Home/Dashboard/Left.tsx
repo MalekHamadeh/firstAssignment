@@ -1,45 +1,92 @@
 import React from "react";
 import {
-  LeftBottomGridItem,
+  BottomGridItem,
   LeftGrid,
-  LeftTopGridItem,
-  LeftWrapper,
-  TopWrapper,
+  TopGridItem,
+  GridItemContent,
   InfoGrid,
-  TopTextWrapperItem,
+  InfoGridItem,
   Title,
   Text,
   TopPictureWrapperItem,
   StyledImage,
-} from "../StyledHome";
+  BottomGrid,
+  TitleGridItem,
+  ContentGridItem,
+  ProjectTitle,
+  ContentWrapper,
+  ContentGrid,
+  ContentItem,
+  ContentItemWrapper,
+} from "./StyledDashboard";
 import WelcomPic from "../../../Images/Pictures/WelcomePic.svg";
 
 const Left = () => {
   return (
-    <LeftWrapper>
-      <LeftGrid direction='column'>
-        <LeftTopGridItem>
-          <TopWrapper>
-            <TopTextWrapperItem>
-              <InfoGrid>
-                <Title>Welcome Back, Name</Title>
-                <Text>
-                  in <strong>Marketing </strong> You have <strong>14 </strong>
-                  tasks to accomplish and <strong>10 </strong> <br /> review
-                  left in your current iteration
-                </Text>
-              </InfoGrid>
-            </TopTextWrapperItem>
-          </TopWrapper>
+    <LeftGrid>
+      <TopGridItem>
+        <GridItemContent>
+          <InfoGrid>
+            <InfoGridItem>
+              <Title>Welcome Back, Name</Title>
+            </InfoGridItem>
+            <InfoGridItem>
+              <Text>
+                in <strong>Marketing </strong> You have <strong>14 </strong>
+                tasks to accomplish and <strong>10 </strong> <br /> review left
+                in your current iteration
+              </Text>
+            </InfoGridItem>
+          </InfoGrid>
           <TopPictureWrapperItem>
             <StyledImage src={WelcomPic} />
           </TopPictureWrapperItem>
-        </LeftTopGridItem>
-        <LeftBottomGridItem>
-          <h1>BOTTOM</h1>
-        </LeftBottomGridItem>
-      </LeftGrid>
-    </LeftWrapper>
+        </GridItemContent>
+      </TopGridItem>
+      <BottomGridItem>
+        <BottomGrid>
+          <TitleGridItem>
+            <ProjectTitle>Favorite Project</ProjectTitle>
+          </TitleGridItem>
+          <ContentGridItem>
+            <ContentWrapper>
+              <ContentGrid>
+                <ContentItem>
+                  <ContentItemWrapper>1</ContentItemWrapper>
+                </ContentItem>
+                <ContentItem>
+                  <ContentItemWrapper>1</ContentItemWrapper>
+                </ContentItem>
+                <ContentItem>
+                  <ContentItemWrapper>1</ContentItemWrapper>
+                </ContentItem>
+                <ContentItem>
+                  <ContentItemWrapper>1</ContentItemWrapper>
+                </ContentItem>
+                <ContentItem>
+                  <ContentItemWrapper>1</ContentItemWrapper>
+                </ContentItem>
+                <ContentItem>
+                  <ContentItemWrapper>1</ContentItemWrapper>
+                </ContentItem>
+                <ContentItem>
+                  <ContentItemWrapper>1</ContentItemWrapper>
+                </ContentItem>
+                <ContentItem>
+                  <ContentItemWrapper>1</ContentItemWrapper>
+                </ContentItem>
+                <ContentItem>
+                  <ContentItemWrapper>1</ContentItemWrapper>
+                </ContentItem>
+                <ContentItem>
+                  <ContentItemWrapper>1</ContentItemWrapper>
+                </ContentItem>
+              </ContentGrid>
+            </ContentWrapper>
+          </ContentGridItem>
+        </BottomGrid>
+      </BottomGridItem>
+    </LeftGrid>
   );
 };
 

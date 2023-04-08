@@ -7,6 +7,8 @@ import {
   StyledHeroHeader,
   StyledHeroWrapper,
   StyledSmallBtn,
+  StyledDivider,
+  StyledHeroHeaderContent,
 } from "./StyledHome";
 import { Divider } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
@@ -19,21 +21,23 @@ const HeroSection = () => {
   return (
     <StyledHeroWrapper>
       <StyledHeroHeader>
-        <StyledHeaderTitleWrapper>
-          <StyledHeaderTitle>{data.title}</StyledHeaderTitle>
-        </StyledHeaderTitleWrapper>
-        {shouldShowIcon && (
-          <StyledHeaderIconWrapper>
-            <StyledSmallBtn color='warning'>
-              <NotificationsNoneIcon />
-            </StyledSmallBtn>
-            <StyledSmallBtn color='primary'>
-              <AddIcon />
-            </StyledSmallBtn>
-          </StyledHeaderIconWrapper>
-        )}
+        <StyledHeroHeaderContent>
+          <StyledHeaderTitleWrapper>
+            <StyledHeaderTitle>{data.title}</StyledHeaderTitle>
+          </StyledHeaderTitleWrapper>
+          {shouldShowIcon && (
+            <StyledHeaderIconWrapper>
+              <StyledSmallBtn color='warning'>
+                <NotificationsNoneIcon />
+              </StyledSmallBtn>
+              <StyledSmallBtn color='primary'>
+                <AddIcon />
+              </StyledSmallBtn>
+            </StyledHeaderIconWrapper>
+          )}
+        </StyledHeroHeaderContent>
       </StyledHeroHeader>
-      <Divider />
+      <StyledDivider />
       <StyledHeroBody>{data.component}</StyledHeroBody>
     </StyledHeroWrapper>
   );

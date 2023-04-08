@@ -4,7 +4,8 @@ import {
   DashboardWrapper,
   LeftGridItem,
   RightGridItem,
-} from "../StyledHome";
+  VerticalDivider,
+} from "./StyledDashboard";
 import { Divider } from "@mui/material";
 import Left from "./Left";
 import Right from "./Right";
@@ -16,7 +17,7 @@ const Dashboard = () => {
         <LeftGridItem>
           <Left />
         </LeftGridItem>
-        <Divider orientation='vertical' flexItem />
+        <VerticalDivider />
         <RightGridItem>
           <Right />
         </RightGridItem>
