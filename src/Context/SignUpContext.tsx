@@ -1,22 +1,8 @@
 import { createContext, useState, useEffect } from "react";
 
-const SignUpContext = createContext<SignUpContextProps>({
-  title: [],
-  step: 0,
-  setStep: (step: number) => {},
-  data: {
-    email: "",
-    fullName: "",
-    password: "",
-    companyName: "",
-    space: "",
-    industry: "",
-    nbOfEmployees: "",
-    accpetTerms: false,
-  },
-  setData: () => {},
-  canContinue: false,
-});
+const SignUpContext = createContext<SignUpContextProps>(
+  {} as SignUpContextProps
+);
 
 //#region Interfaces
 interface SignUpProviderProps {

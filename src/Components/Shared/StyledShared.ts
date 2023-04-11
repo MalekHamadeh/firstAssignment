@@ -1,15 +1,40 @@
 import { Alert, Grid, Typography } from "@mui/material";
 import styled from "styled-components";
 
-export const StyledAlert = styled(Alert)(({ severity }) => ({
-  width: "28vw",
-  "&&": {
-    color: severity === "error" ? "#fd5461" : "#29C293",
-    background: "#f4f6fc",
-    fontFamily: "Rubik, sans-serif",
-  },
-}));
+//#region Styling Alert
 
+export const AlertWrapper = styled.div`
+  width: 100%;
+  height: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const StyledAlert = styled(Alert)`
+  && {
+    background-color: #f4f6fc;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+  & .MuiAlert-message {
+    font-family: Rubik, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.5rem;
+    font-size: 1rem;
+    color: ${({ severity }) => (severity === "error" ? "#fd5461" : "#29C293")};
+  }
+  & .MuiAlert-icon {
+    color: ${({ severity }) => (severity === "error" ? "#fd5461" : "#29C293")};
+  }
+`;
+
+//#endregion
+
+//#region Styling ProjectIcon
 export const ProjectIconWrapper = styled.div`
   width: 80%;
 `;
@@ -57,3 +82,5 @@ export const ProjectNameItem = styled(Grid).attrs({ item: true })`
 
   height: 10%;
 `;
+
+//#endregion

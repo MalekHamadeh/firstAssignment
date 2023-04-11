@@ -8,7 +8,7 @@ import {
   ProjectNameItem,
 } from "./StyledShared";
 
-const ProjectIcon = () => {
+const FavoriteProjectList = () => {
   return (
     <ProjectIconWrapper>
       <ProjectIconGrid>
@@ -23,4 +23,4 @@ const ProjectIcon = () => {
   );
 };
 
-export default ProjectIcon;
+export default FavoriteProjectList;

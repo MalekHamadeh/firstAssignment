@@ -1,4 +1,6 @@
 import { Typography, Grid, Divider } from "@mui/material";
+import IconButton from "@mui/material-next/Button";
+
 import styled from "styled-components";
 
 interface ImageSource {
@@ -23,11 +25,6 @@ export const LeftGridItem = styled(Grid).attrs({ item: true })`
   && {
     flex-grow: 1;
     margin-top: 3rem;
-  }
-`;
-export const RightGridItem = styled(Grid).attrs({ item: true })`
-  && {
-    flex-grow: 1.2;
   }
 `;
 
@@ -192,8 +189,92 @@ export const ContentItemWrapper = styled.div`
   justify-content: center;
 `;
 
-export const RightWrapper = styled.div`
+//#endregion
+
+//#region Right Component
+export const RightGridItem = styled(Grid).attrs({ item: true })`
+  && {
+    flex-grow: 1.2;
+  }
+`;
+
+export const RightWrapper = styled(Grid).attrs({ container: true })`
   height: 100%;
   width: 100%;
 `;
+
+export const RightWrapperTitle = styled(Grid).attrs({ item: true })`
+  && {
+    height: 10%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top: 2rem;
+  }
+`;
+export const TitleContent = styled(Grid).attrs({ container: true })`
+  && {
+    height: 100%;
+    width: 95%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+`;
+
+export const TitleContentItem = styled(Grid).attrs({ item: true })``;
+
+export const RightProjectTitle = styled(Typography).attrs({ variant: "h2" })`
+  && {
+    font-family: "Rubik", sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.625rem;
+    line-height: 1.938rem;
+    color: #4c84ff;
+  }
+`;
+
+export const GoToProjectButton = styled(IconButton).attrs({})`
+  && {
+    font-family: "Rubik", sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 0.75rem;
+    line-height: 0.875rem;
+    color: #838895;
+  }
+`;
+
+export const GoToIcon = styled.img`
+  height: 1.5rem;
+  width: 1.5rem;
+  padding-left: 0.5rem;
+`;
+
+export const RightWrapperToDos = styled(Grid).attrs({ item: true })`
+  && {
+    width: 100%;
+    background-color: blue;
+  }
+  height: 40%;
+  display: flex;
+  justify-content: center;
+`;
+
+export const TaskListWrapper = styled.div`
+  height: 100%;
+  width: 95%;
+  background-color: white;
+`;
+
+export const RightWrapperReview = styled(Grid).attrs({ item: true, xs: 12 })`
+  && {
+    width: 100%;
+    background-color: blue;
+  }
+  height: 40%;
+  border-top: 5px solid black;
+`;
+
 //#endregion

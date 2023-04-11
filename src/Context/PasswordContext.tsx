@@ -1,16 +1,8 @@
 import { createContext, useState, useEffect } from "react";
 
-const PasswordContext = createContext<PasswordContextProps>({
-  title: [],
-  step: 0,
-  setStep: (step: number) => {},
-  data: {
-    email: "",
-    password: "",
-  },
-  setData: () => {},
-  canContinue: false,
-});
+const PasswordContext = createContext<PasswordContextProps>(
+  {} as PasswordContextProps
+);
 
 //#region Interfaces
 interface PasswordProviderProps {
@@ -24,6 +16,7 @@ export interface PasswordContextProps {
   data: PasswordData;
   setData: (data: PasswordData) => void;
   canContinue: boolean;
+  setCanContinue: (canContinue: boolean) => void;
 }
 
 interface PasswordData {
@@ -42,20 +35,30 @@ export const PasswordProvider = ({ children }: PasswordProviderProps) => {
     password: "",
   });
 
+  const [canContinue, setCanContinue] = useState(false);
+
   //   const handleChanges = (e) => {
   //     const { name, value } = e.target;
   //     setData({ ...data, [name]: value });
   //   };
 
-  const { ...requiredData } = data;
+  // const { ...requiredData } = data;
 
-  const canContinue =
-    [...Object.values(requiredData)].every(Boolean) &&
-    step === Object.keys(title).length - 1;
+  // const canContinue =
+  //   [...Object.values(requiredData)].every(Boolean) &&
+  //   step === Object.keys(title).length - 1;
 
   return (
     <PasswordContext.Provider
-      value={{ title, step, setStep, data, setData, canContinue }}
+      value={{
+        title,
+        step,
+        setStep,
+        data,
+        setData,
+        canContinue,
+        setCanContinue,
+      }}
     >
       {children}
     </PasswordContext.Provider>

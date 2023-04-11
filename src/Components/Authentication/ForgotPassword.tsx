@@ -1,7 +1,15 @@
 import React, { useContext, useEffect, useState } from "react";
 import {
+  ForgotPasswordWrapper,
   GridContainer,
   GridItem,
+  PasswordAlertItem,
+  PasswordButtonsItem,
+  PasswordDesItem,
+  PasswordGrid,
+  PasswordInputItem,
+  PasswordTitleItem,
+  ScreenTitle,
   StyledButton,
   StyledText,
 } from "./StyledAuthentication";
@@ -9,79 +17,69 @@ import FormInputs from "./FormInputs";
 import PasswordContext, {
   PasswordContextProps,
 } from "../../Context/PasswordContext";
+import Alert from "../Shared/Alert";
+import AuthenticationContext from "../../Context/AuthenticationContext";
+import { AuthenticationContextProps } from "../../Context/ContextTypes";
 
-interface ForgotPasswordProps {
-  onClick: (string: string) => void;
-  didSucceed: (boolean: Boolean) => void;
-}
-
-const ForgotPassword = ({ onClick, didSucceed }: ForgotPasswordProps) => {
-  const [localStep, setLocalStep] = useState<number>(() => {
-    const localSteps = localStorage.getItem("step");
-    return localSteps ? +localSteps : 0;
-  });
-
-  const { title, step, setStep }: PasswordContextProps =
-    useContext(PasswordContext);
-
-  useEffect(() => {
-    localStorage.setItem("step", step.toString());
-    return () => {
-      localStorage.removeItem("step");
-    };
-  }, [step]);
+const ForgotPassword = () => {
+  const {
+    passwordTitle,
+    step,
+    canContinuePassword,
+    screen,
+    setIsSuccessfulPassword,
+    setStep,
+    handleScreens,
+  }: AuthenticationContextProps = useContext(AuthenticationContext);
 
   const handleNext = () => {
-    setStep(step + 1);
-    setLocalStep((prev) => prev + 1);
+    if (step !== 1) {
+      setStep(step + 1);
+    } else {
+      handleScreens("Login");
+      setStep(0);
+      setIsSuccessfulPassword(true);
+    }
   };
 
   const returnToLogin = () => {
-    onClick("Login");
-    didSucceed(true);
+    handleScreens("Login");
+    setStep(0);
   };
   return (
-    <GridContainer
-      direction='column'
-      justifyContent='center'
-      alignItems='center'
-      spacing={2}
-    >
-      <GridItem xs={1} />
-      <GridItem xs={1} />
-      <GridItem xs={1}>
-        <StyledText variant='h4'>Forgot your password</StyledText>
-      </GridItem>
-      <GridItem xs={1} />
-      <GridItem xs={1}>
-        <StyledText>{title[localStep]}</StyledText>
-      </GridItem>
-      <GridItem xs={1} />
-      <GridItem xs={1}>
-        <FormInputs from='forgot' formStep={localStep} />
-      </GridItem>
-      {step !== 1 && (
-        <>
-          <GridItem xs={1}>
-            <StyledButton variant='contained' onClick={handleNext}>
-              Next
-            </StyledButton>
-          </GridItem>
-          <GridItem xs={1}>
-            <StyledButton variant='text' onClick={returnToLogin}>
-              Go back
-            </StyledButton>
-          </GridItem>
-        </>
-      )}
-      {step === 1 && (
-        <GridItem xs={1}>
-          <StyledButton variant='contained' onClick={returnToLogin}>
-            Set New Password
+    <ForgotPasswordWrapper>
+      <PasswordGrid>
+        <PasswordTitleItem>
+          <ScreenTitle>Forgot your password</ScreenTitle>
+        </PasswordTitleItem>
+        <PasswordDesItem>
+          <StyledText>{passwordTitle[step]}</StyledText>
+        </PasswordDesItem>
+        <PasswordAlertItem>
+          {canContinuePassword && (
+            <Alert
+              isSuccess
+              message="Well done, we'll email you with a reset link."
+            />
+          )}
+        </PasswordAlertItem>
+        <PasswordInputItem>
+          <FormInputs from='forgot' formStep={step} />
+        </PasswordInputItem>
+        <PasswordButtonsItem>
+          <StyledButton variant='contained' onClick={handleNext}>
+            {step === 1 ? "Recover Your Password" : "Next"}
           </StyledButton>
-        </GridItem>
-      )}
-    </GridContainer>
+          {step !== 1 && (
+            <>
+              <StyledButton variant='text' onClick={returnToLogin}>
+                Go back
+              </StyledButton>
+            </>
+          )}
+        </PasswordButtonsItem>
+      </PasswordGrid>
+    </ForgotPasswordWrapper>
   );
 };
 

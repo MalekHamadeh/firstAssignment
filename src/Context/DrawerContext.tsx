@@ -10,15 +10,9 @@ import HomeIcon from "../Images/Icons/homeIcon.svg";
 import SettingsIcon from "../Images/Icons/settingsIcon.svg";
 // import { Home } from "@mui/icons-material";
 
-const DrawerContext = createContext<DrawerContextProps>({
-  mainItems: [],
-  subItems: [],
-  data: {
-    title: "",
-    component: null,
-  },
-  handleChanges: (title: string, component: JSX.Element) => {},
-});
+const DrawerContext = createContext<DrawerContextProps>(
+  {} as DrawerContextProps
+);
 
 interface DrawerProviderProps {
   children: React.ReactNode;

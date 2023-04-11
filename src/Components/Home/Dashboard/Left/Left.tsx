@@ -18,9 +18,9 @@ import {
   ContentGrid,
   ContentItem,
   ContentItemWrapper,
-} from "./StyledDashboard";
-import WelcomPic from "../../../Images/Pictures/WelcomePic.svg";
-import ProjectIcon from "../../Shared/ProjectIcon";
+} from "../StyledDashboard";
+import WelcomPic from "../../../../Images/Pictures/WelcomePic.svg";
+import FavoriteProjectList from "../../../Shared/FavoriteProjectList";
 
 const Left = () => {
   return (
@@ -54,37 +54,37 @@ const Left = () => {
               <ContentGrid>
                 <ContentItem>
                   <ContentItemWrapper>
-                    <ProjectIcon />
+                    <FavoriteProjectList />
                   </ContentItemWrapper>
                 </ContentItem>
                 <ContentItem>
                   <ContentItemWrapper>
-                    <ProjectIcon />
+                    <FavoriteProjectList />
                   </ContentItemWrapper>
                 </ContentItem>
                 <ContentItem>
                   <ContentItemWrapper>
-                    <ProjectIcon />
+                    <FavoriteProjectList />
                   </ContentItemWrapper>
                 </ContentItem>
                 <ContentItem>
                   <ContentItemWrapper>
-                    <ProjectIcon />
+                    <FavoriteProjectList />
                   </ContentItemWrapper>
                 </ContentItem>
                 <ContentItem>
                   <ContentItemWrapper>
-                    <ProjectIcon />
+                    <FavoriteProjectList />
                   </ContentItemWrapper>
                 </ContentItem>
                 <ContentItem>
                   <ContentItemWrapper>
-                    <ProjectIcon />
+                    <FavoriteProjectList />
                   </ContentItemWrapper>
                 </ContentItem>
                 <ContentItem>
                   <ContentItemWrapper>
-                    <ProjectIcon />
+                    <FavoriteProjectList />
                   </ContentItemWrapper>
                 </ContentItem>
               </ContentGrid>

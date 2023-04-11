@@ -1,72 +1,39 @@
-import { FC, useEffect, useState } from "react";
-import Login from "../Components/Authentication/Login";
-import Signup from "../Components/Authentication/SignUp";
-
 import {
   Outline,
   StyledPaper,
-  Header,
+  Slogan,
   HeaderWrapper,
   StyledLogo,
+  StyledPaperWrapper,
+  HeaderContainer,
+  SloganWrapper,
+  LogoWrapper,
 } from "../Components/Authentication/StyledAuthentication";
-import { SignUpProvider } from "../Context/SignUpContext";
-import { PasswordProvider } from "../Context/PasswordContext";
-import ForgotPassword from "../Components/Authentication/ForgotPassword";
 import logo from "../Images/Logo/roundRushLogo.svg";
+import AuthenticationComponent from "../Components/Authentication/AuthenticationComponent";
+import { AuthenticationProvider } from "../Context/AuthenticationContext";
 
 const Authentication = () => {
-  const [screen, setScreen] = useState<string>(() => {
-    const savedScreen = localStorage.getItem("screen");
-    return savedScreen ? savedScreen : "Login";
-  });
-  const [successfulPass, setSuccessfulPass] = useState<Boolean>(false);
-  const [successfulSignUp, setSuccessfulSignUp] = useState<Boolean>(false);
-
-  useEffect(() => {
-    localStorage.setItem("screen", screen);
-  }, [screen]);
-
-  const handleScreens = (string: string) => {
-    setScreen(string);
-  };
-
-  const handleSucceed = (boolean: Boolean) => {
-    setSuccessfulPass(boolean);
-  };
-  const handleSuccessfulSignUp = (boolean: Boolean) => {
-    setSuccessfulSignUp(boolean);
-  };
-
   return (
     <Outline>
       <HeaderWrapper>
-        <StyledLogo src={logo} />
-        <Header>The Optimized Workflow </Header>
-        <Header>Out Of The Box</Header>
+        <HeaderContainer>
+          <LogoWrapper>
+            <StyledLogo src={logo} />
+          </LogoWrapper>
+          <SloganWrapper>
+            <Slogan>The Optimized Workflow </Slogan>
+            <Slogan>Out Of The Box</Slogan>
+          </SloganWrapper>
+        </HeaderContainer>
       </HeaderWrapper>
-      <StyledPaper elevation={3}>
-        {screen === "Login" ? (
-          <Login
-            onClick={handleScreens}
-            successfulPass={successfulPass}
-            successfulSignUp={successfulSignUp}
-          />
-        ) : screen === "SignUp" ? (
-          <SignUpProvider>
-            <Signup
-              onClick={handleScreens}
-              successfulSignUp={handleSuccessfulSignUp}
-            />
-          </SignUpProvider>
-        ) : (
-          <PasswordProvider>
-            <ForgotPassword
-              onClick={handleScreens}
-              didSucceed={handleSucceed}
-            />
-          </PasswordProvider>
-        )}
-      </StyledPaper>
+      <StyledPaperWrapper>
+        <StyledPaper elevation={3}>
+          <AuthenticationProvider>
+            <AuthenticationComponent />
+          </AuthenticationProvider>
+        </StyledPaper>
+      </StyledPaperWrapper>
     </Outline>
   );
 };

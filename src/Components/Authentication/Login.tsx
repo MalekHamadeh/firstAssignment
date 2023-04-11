@@ -1,30 +1,36 @@
-import { Button } from "@mui/material";
-import React, { useRef, useState } from "react";
+import React, { useRef, useContext, useEffect } from "react";
 import {
-  GridItem,
-  GridContainer,
   StyledButton,
   StyledInput,
-  // StyledAlert,
-  StyledText,
+  LoginGrid,
+  LoginTitleItem,
+  LoginButtonItem,
+  LoginLinksItem,
+  LoginInputGrid,
+  LoginAlert,
+  LoginInputItem,
+  LoginWrapper,
+  LinkButton,
+  ScreenTitle,
 } from "./StyledAuthentication";
 import { useNavigate } from "react-router-dom";
 import Alert from "../Shared/Alert";
-// import Alert from "../Alert";
-// { onClick, successfulPass, successfulSignUp }
+import AuthenticationContext from "../../Context/AuthenticationContext";
 
-interface LoginProps {
-  onClick: (string: string) => void;
-  successfulPass: Boolean;
-  successfulSignUp: Boolean;
-}
-
-const Login = ({ onClick, successfulPass, successfulSignUp }: LoginProps) => {
-  const [incorrect, isIncorrect] = useState(false);
-  const [showAlert, shouldShowAlert] = useState(false);
+const Login = () => {
   const emailRef = useRef<HTMLInputElement | null>(null);
   const passwordRef = useRef<HTMLInputElement | null>(null);
   const Navigate = useNavigate();
+
+  const {
+    isSuccessfulSignUp,
+    isSuccessfulPassword,
+    isError,
+    handleScreens,
+    setIsSuccessfulPassword,
+    setIsSuccessfulSignUp,
+    setIsError,
+  } = useContext(AuthenticationContext);
 
   const handleEmail = () => {
     const email = emailRef.current?.value;
@@ -33,80 +39,82 @@ const Login = ({ onClick, successfulPass, successfulSignUp }: LoginProps) => {
     const password = passwordRef.current?.value;
   };
 
+  useEffect(() => {
+    if (isSuccessfulPassword) {
+      setTimeout(() => {
+        setIsSuccessfulPassword(false);
+      }, 3000);
+    }
+
+    if (isSuccessfulSignUp) {
+      setTimeout(() => {
+        setIsSuccessfulSignUp(false);
+      }, 4000);
+    }
+
+    if (isError) {
+      setTimeout(() => {
+        setIsError(false);
+      }, 4000);
+    }
+  }, [isSuccessfulPassword, isSuccessfulSignUp, isError]);
+
   const canLogin = () => {
     emailRef.current?.value !== "" && passwordRef.current?.value !== ""
       ? Navigate("/home")
-      : isIncorrect(true);
+      : setIsError(true);
   };
 
   const goToSignUp = () => {
-    onClick("SignUp");
-    console.log("To signUp");
+    handleScreens("SignUp");
   };
   const goToForgotPassword = () => {
-    onClick("ForgotPassword");
+    handleScreens("ForgotPassword");
   };
 
   const alertController = () => {
-    if (incorrect) {
+    if (isError) {
       return (
         <Alert
           isError
           message='Please make sure you have the correct email or password'
         />
       );
-    } else if (successfulPass) {
+    } else if (isSuccessfulPassword) {
       return <Alert isSuccess message='Password was reset Successfully' />;
-    } else if (successfulSignUp) {
+    } else if (isSuccessfulSignUp) {
       return <Alert isSuccess message='Account created Successfully' />;
     }
   };
 
   return (
-    <GridContainer
-      direction='column'
-      justifyContent='center'
-      alignItems='center'
-      spacing={3}
-    >
-      {/* used to create whitespace between Title and Inputs*/}
-      <GridItem />
-      <GridItem />
-      <GridItem xs={1}>
-        <StyledText variant='h4'>Login</StyledText>
-      </GridItem>
-      <GridItem />
-      <GridItem>{alertController()}</GridItem>
-      <GridItem xs={1}>
-        <StyledInput
-          placeholder='Email'
-          inputRef={emailRef}
-          onChange={handleEmail}
-        />
-      </GridItem>
-      <GridItem xs={1}>
-        <StyledInput
-          placeholder='Password'
-          inputRef={passwordRef}
-          onChange={handlePassword}
-        />
-      </GridItem>
-      <GridItem xs={1}>
-        <StyledButton variant='contained' onClick={canLogin}>
-          Login
-        </StyledButton>
-      </GridItem>
-      <GridItem>
-        <GridContainer direction='row' gap={30}>
-          <GridItem>
-            <Button onClick={goToForgotPassword}>Forgot Password?</Button>
-          </GridItem>
-          <GridItem>
-            <Button onClick={goToSignUp}>I dont have an account</Button>
-          </GridItem>
-        </GridContainer>
-      </GridItem>
-    </GridContainer>
+    <LoginWrapper>
+      <LoginGrid>
+        <LoginTitleItem>
+          <ScreenTitle>Login</ScreenTitle>
+        </LoginTitleItem>
+        <LoginAlert>{alertController()}</LoginAlert>
+        <LoginInputGrid>
+          <LoginInputItem>
+            <StyledInput placeholder='Email' inputRef={emailRef} />
+          </LoginInputItem>
+          <LoginInputItem>
+            <StyledInput placeholder='Password' inputRef={passwordRef} />
+          </LoginInputItem>
+        </LoginInputGrid>
+        <LoginButtonItem>
+          <StyledButton variant='contained' onClick={canLogin}>
+            Login
+          </StyledButton>
+        </LoginButtonItem>
+        <LoginLinksItem>
+          <LinkButton onClick={goToForgotPassword}>
+            I forgot my password
+          </LinkButton>
+          <LinkButton onClick={goToSignUp}>I don’t have an account</LinkButton>
+        </LoginLinksItem>
+      </LoginGrid>
+    </LoginWrapper>
   );
 };
 

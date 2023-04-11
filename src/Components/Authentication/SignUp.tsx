@@ -3,73 +3,91 @@ import FormInputs from "./FormInputs";
 import {
   GridContainer,
   GridItem,
+  SignUpButtonsItem,
+  SignUpGrid,
+  SignUpInputItem,
+  SignUpTitleItem,
+  SignUpWrapper,
   StyledButton,
   StyledInput,
   StyledText,
 } from "./StyledAuthentication";
 import SignUpContext, { SignUpContextProps } from "../../Context/SignUpContext";
+import { AuthenticationContextProps } from "../../Context/ContextTypes";
+import AuthenticationContext from "../../Context/AuthenticationContext";
 
-interface SignupProps {
-  onClick: (string: string) => void;
-  successfulSignUp: (boolean: Boolean) => void;
-}
-
-const Signup = ({ onClick, successfulSignUp }: SignupProps) => {
-  const [localStep, setLocalStep] = useState<number>(() => {
-    const localSteps = localStorage.getItem("step");
-    return localSteps ? +localSteps : 0;
-  });
-  const { title, step, setStep }: SignUpContextProps =
-    useContext(SignUpContext);
-
-  useEffect(() => {
-    localStorage.setItem("step", step.toString());
-    return () => {
-      localStorage.removeItem("step");
-    };
-  }, [step]);
+const Signup = () => {
+  const {
+    signUpTitle,
+    step,
+    setStep,
+    handleScreens,
+  }: AuthenticationContextProps = useContext(AuthenticationContext);
 
   const goToLogin = () => {
-    onClick("Login");
-    successfulSignUp(true);
+    handleScreens("Login");
   };
   const handleNext = () => {
-    setStep(step + 1);
-    setLocalStep((prev) => prev + 1);
+    if (step !== 2) {
+      setStep(step + 1);
+    } else {
+      handleScreens("Login");
+      setStep(0);
+    }
   };
 
   return (
-    <GridContainer
-      direction='column'
-      justifyContent='center'
-      alignItems='center'
-      spacing={2}
-    >
-      <GridItem xs={1} />
+    <SignUpWrapper>
+      <SignUpGrid>
+        <SignUpTitleItem>Title</SignUpTitleItem>
+        <SignUpInputItem>
+          <FormInputs from='signup' formStep={step} />
+        </SignUpInputItem>
+        <SignUpButtonsItem>
+          {signUpTitle[step] !== "Create your company space" ? (
+            <StyledButton variant='contained' onClick={handleNext}>
+              Next
+            </StyledButton>
+          ) : (
+            <StyledButton
+              variant='contained'
+              register={true}
+              onClick={handleNext}
+            >
+              Register
+            </StyledButton>
+          )}
+        </SignUpButtonsItem>
+      </SignUpGrid>
+      {/* <GridItem xs={1} />
       <GridItem xs={1} />
       <GridItem xs={1}>
         <StyledText variant='h4'>Sign Up</StyledText>
       </GridItem>
       <GridItem xs={1} />
       <GridItem xs={1}>
-        <StyledText variant='body1'>{title[localStep]}</StyledText>
+        <StyledText variant='body1'>{signUpTitle[step]}</StyledText>
       </GridItem>
       <GridItem xs={1} />
       <GridItem xs={1}>
-        <FormInputs from='signup' formStep={localStep} />
+        <FormInputs from='signup' formStep={step} />
       </GridItem>
       <GridItem xs={1}>
-        {title[localStep] !== "Create your company space" ? (
+        {signUpTitle[step] !== "Create your company space" ? (
           <StyledButton variant='contained' onClick={handleNext}>
             Next
           </StyledButton>
         ) : (
-          <StyledButton variant='contained' register={true} onClick={goToLogin}>
+          <StyledButton
+            variant='contained'
+            register={true}
+            onClick={handleNext}
+          >
             Register
           </StyledButton>
         )}
-      </GridItem>
-    </GridContainer>
+      </GridItem> */}
+    </SignUpWrapper>
   );
 };
 

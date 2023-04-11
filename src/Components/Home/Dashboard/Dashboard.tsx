@@ -7,8 +7,8 @@ import {
   VerticalDivider,
 } from "./StyledDashboard";
 import { Divider } from "@mui/material";
-import Left from "./Left";
-import Right from "./Right";
+import Left from "./Left/Left";
+import Right from "./Right/Right";
 
 const Dashboard = () => {
   return (

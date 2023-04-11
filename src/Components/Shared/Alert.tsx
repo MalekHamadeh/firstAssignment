@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { StyledAlert } from "../Shared/StyledShared";
+import { AlertWrapper, StyledAlert } from "../Shared/StyledShared";
 
 interface AlertProps {
   message: string;
@@ -16,19 +16,19 @@ const Alert = ({ message, isSuccess = false, isError = false }: AlertProps) => {
       const timer = setTimeout(() => {
         shouldShowAlert(false);
         console.log("here");
-      }, 5000);
+      }, 2000);
     }
   }, [isSuccess, isError]);
 
   return (
-    <div>
+    <AlertWrapper>
       {showAlert && isError && (
         <StyledAlert severity='error'>{message}</StyledAlert>
       )}
       {showAlert && isSuccess && (
         <StyledAlert severity='success'>{message}</StyledAlert>
       )}
-    </div>
+    </AlertWrapper>
   );
 };
 
