@@ -1,16 +1,18 @@
 import React from "react";
-import { GridContainer, GridItem, StyledInput } from "../StyledAuthentication";
+
+import { Grid } from "@mui/material";
+import { StyledInput } from "../../Shared/StyledShared";
 
 const CreateAccount = () => {
   return (
-    <GridContainer direction='column' gap={1}>
-      <GridItem xs={1}>
+    <Grid container direction='column' gap={1}>
+      <Grid item xs={1}>
         <StyledInput placeholder='Enter Username' />
-      </GridItem>
-      <GridItem xs={1}>
+      </Grid>
+      <Grid item xs={1}>
         <StyledInput placeholder='Enter password' />
-      </GridItem>
-    </GridContainer>
+      </Grid>
+    </Grid>
   );
 };
 

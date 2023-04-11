@@ -1,5 +1,5 @@
 import React from "react";
-import { StyledInput } from "../StyledAuthentication";
+import { StyledInput } from "../../Shared/StyledShared";
 
 const CheckEmail = () => {
   return <StyledInput placeholder='Enter your email' />;

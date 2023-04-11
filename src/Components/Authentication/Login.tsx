@@ -1,21 +1,22 @@
 import React, { useRef, useContext, useEffect } from "react";
 import {
-  StyledButton,
-  StyledInput,
-  LoginGrid,
-  LoginTitleItem,
-  LoginButtonItem,
-  LoginLinksItem,
-  LoginInputGrid,
-  LoginAlert,
-  LoginInputItem,
-  LoginWrapper,
-  LinkButton,
-  ScreenTitle,
+  ContentWrapper,
+  ContentGrid,
+  TitleItem,
+  ContentTitle,
+  ContentAlert,
+  ContentInputGrid,
+  ContentInputItem,
+  ContentButtonItem,
+  ContentLinksItem,
+  ContentButtonGrid,
+  ContainedBtn,
+  TextBtn,
 } from "./StyledAuthentication";
 import { useNavigate } from "react-router-dom";
 import Alert from "../Shared/Alert";
 import AuthenticationContext from "../../Context/AuthenticationContext";
+import { StyledInput } from "../Shared/StyledShared";
 
 const Login = () => {
   const emailRef = useRef<HTMLInputElement | null>(null);
@@ -88,33 +89,31 @@ const Login = () => {
   };
 
   return (
-    <LoginWrapper>
-      <LoginGrid>
-        <LoginTitleItem>
-          <ScreenTitle>Login</ScreenTitle>
-        </LoginTitleItem>
-        <LoginAlert>{alertController()}</LoginAlert>
-        <LoginInputGrid>
-          <LoginInputItem>
+    <ContentWrapper>
+      <ContentGrid>
+        <TitleItem>
+          <ContentTitle>Login</ContentTitle>
+        </TitleItem>
+        <ContentAlert>{alertController()}</ContentAlert>
+        <ContentInputGrid>
+          <ContentInputItem>
             <StyledInput placeholder='Email' inputRef={emailRef} />
-          </LoginInputItem>
-          <LoginInputItem>
             <StyledInput placeholder='Password' inputRef={passwordRef} />
-          </LoginInputItem>
-        </LoginInputGrid>
-        <LoginButtonItem>
-          <StyledButton variant='contained' onClick={canLogin}>
-            Login
-          </StyledButton>
-        </LoginButtonItem>
-        <LoginLinksItem>
-          <LinkButton onClick={goToForgotPassword}>
-            I forgot my password
-          </LinkButton>
-          <LinkButton onClick={goToSignUp}>I don’t have an account</LinkButton>
-        </LoginLinksItem>
-      </LoginGrid>
-    </LoginWrapper>
+          </ContentInputItem>
+        </ContentInputGrid>
+        <ContentButtonGrid>
+          <ContentButtonItem>
+            <ContainedBtn variant='contained' onClick={canLogin}>
+              Login
+            </ContainedBtn>
+          </ContentButtonItem>
+          <ContentLinksItem>
+            <TextBtn onClick={goToForgotPassword}>I forgot my password</TextBtn>
+            <TextBtn onClick={goToSignUp}>I don’t have an account</TextBtn>
+          </ContentLinksItem>
+        </ContentButtonGrid>
+      </ContentGrid>
+    </ContentWrapper>
   );
 };
 

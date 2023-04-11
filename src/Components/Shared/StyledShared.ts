@@ -1,11 +1,20 @@
-import { Alert, Grid, Typography } from "@mui/material";
+import {
+  Alert,
+  Grid,
+  Typography,
+  FormControl,
+  FormLabel,
+  InputLabel,
+  TextField,
+  OutlinedInput,
+} from "@mui/material";
 import styled from "styled-components";
 
 //#region Styling Alert
 
 export const AlertWrapper = styled.div`
-  width: 100%;
-  height: 80%;
+  width: 24vw;
+  height: fit-content;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -57,7 +66,6 @@ export const IconItem = styled(Grid).attrs({ item: true })`
 export const IconContent = styled.div`
   width: 65%;
   height: 55%;
-  background-color: green;
   border-radius: 1rem;
   display: flex;
   justify-content: center;
@@ -81,6 +89,65 @@ export const ProjectNameItem = styled(Grid).attrs({ item: true })`
   align-items: center;
 
   height: 10%;
+`;
+
+//#endregion
+
+//#region Styling Inputs
+export const StyledInputLabel = styled(InputLabel)`
+  && {
+    color: #adb0b8;
+    font-family: "Rubik";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    padding-left: 0.9rem;
+  }
+`;
+
+export const StyledInput = styled(TextField).attrs({
+  variant: "outlined",
+  fullWidth: true,
+  size: "small",
+  InputLabelProps: {
+    shrink: true,
+  },
+  InputProps: {
+    notched: false,
+  },
+})`
+  && {
+    display: flex;
+    align-items: center;
+  }
+
+  fieldset {
+    border-color: #d9dbde;
+  }
+  && .MuiOutlinedInput-root {
+    &.Mui-focused {
+      border: none;
+      fieldset {
+        border-color: #d9dbde;
+      }
+    }
+    &: hover {
+      border: none;
+      fieldset {
+        border-color: #d9dbde;
+      }
+    }
+  }
+  && .MuiInputLabel-outlined {
+    color: #adb0b8;
+    font-family: "Rubik";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    padding-left: 0.9rem;
+    transform: translate(-0.2rem, -1.3rem) scale(1);
+  }
 `;
 
 //#endregion

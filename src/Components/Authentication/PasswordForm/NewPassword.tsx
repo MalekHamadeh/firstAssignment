@@ -1,8 +1,14 @@
 import React from "react";
-import { GridContainer, GridItem, StyledInput } from "../StyledAuthentication";
+import { StyledInput } from "../../Shared/StyledShared";
 
 const NewPassword = () => {
-  return <StyledInput placeholder='Enter your new password' />;
+  return (
+    <StyledInput
+      label='basd'
+      placeholder='Enter New Password'
+      variant='outlined'
+    />
+  );
 };
 
 export default NewPassword;

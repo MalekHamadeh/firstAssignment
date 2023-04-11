@@ -1,22 +1,29 @@
 import React from "react";
-import { GridContainer, GridItem, StyledInput } from "../StyledAuthentication";
+import { StyledInput } from "../../Shared/StyledShared";
+import Grid from "@mui/material/Grid/Grid";
 
 const CompanyInfo = () => {
   return (
-    <GridContainer direction='column' gap={1}>
-      <GridItem xs={1}>
-        <StyledInput placeholder='Enter Company Name' />
-      </GridItem>
-      <GridItem xs={1}>
-        <StyledInput placeholder='Enter Company Address' />
-      </GridItem>
-      <GridItem xs={1}>
-        <StyledInput placeholder='Enter Company Phone Number' />
-      </GridItem>
-      <GridItem xs={1}>
-        <StyledInput placeholder='Enter Company Email' />
-      </GridItem>
-    </GridContainer>
+    <Grid container direction='column' gap={5}>
+      <Grid item xs={1}>
+        <StyledInput label='Company Name' placeholder='Enter Company Name' />
+      </Grid>
+      <Grid item xs={1}>
+        <StyledInput
+          label='Company Address'
+          placeholder='Enter Company Address'
+        />
+      </Grid>
+      <Grid item xs={1}>
+        <StyledInput
+          label='Phone Number'
+          placeholder='Enter Company Phone Number'
+        />
+      </Grid>
+      <Grid item xs={1}>
+        <StyledInput label='Company Email' placeholder='Enter Company Email' />
+      </Grid>
+    </Grid>
   );
 };
 

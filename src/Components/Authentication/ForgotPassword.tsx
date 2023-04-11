@@ -1,22 +1,21 @@
 import React, { useContext, useEffect, useState } from "react";
 import {
-  ForgotPasswordWrapper,
-  GridContainer,
-  GridItem,
-  PasswordAlertItem,
-  PasswordButtonsItem,
-  PasswordDesItem,
-  PasswordGrid,
-  PasswordInputItem,
-  PasswordTitleItem,
-  ScreenTitle,
-  StyledButton,
+  ContentWrapper,
+  ContentGrid,
+  ContentAlert,
+  ContentInputGrid,
+  TitleItem,
+  ContentButtonItem,
   StyledText,
+  ContentTitle,
+  TitleDesc,
+  ContentInputItem,
+  PasswordLinkItem,
+  ContentButtonGrid,
+  ContainedBtn,
+  TextBtn,
 } from "./StyledAuthentication";
 import FormInputs from "./FormInputs";
-import PasswordContext, {
-  PasswordContextProps,
-} from "../../Context/PasswordContext";
 import Alert from "../Shared/Alert";
 import AuthenticationContext from "../../Context/AuthenticationContext";
 import { AuthenticationContextProps } from "../../Context/ContextTypes";
@@ -47,39 +46,41 @@ const ForgotPassword = () => {
     setStep(0);
   };
   return (
-    <ForgotPasswordWrapper>
-      <PasswordGrid>
-        <PasswordTitleItem>
-          <ScreenTitle>Forgot your password</ScreenTitle>
-        </PasswordTitleItem>
-        <PasswordDesItem>
+    <ContentWrapper>
+      <ContentGrid>
+        <TitleItem>
+          <ContentTitle>Forgot your password</ContentTitle>
+        </TitleItem>
+        <TitleDesc>
           <StyledText>{passwordTitle[step]}</StyledText>
-        </PasswordDesItem>
-        <PasswordAlertItem>
+        </TitleDesc>
+        <ContentAlert>
           {canContinuePassword && (
             <Alert
               isSuccess
               message="Well done, we'll email you with a reset link."
             />
           )}
-        </PasswordAlertItem>
-        <PasswordInputItem>
-          <FormInputs from='forgot' formStep={step} />
-        </PasswordInputItem>
-        <PasswordButtonsItem>
-          <StyledButton variant='contained' onClick={handleNext}>
-            {step === 1 ? "Recover Your Password" : "Next"}
-          </StyledButton>
+        </ContentAlert>
+        <ContentInputGrid>
+          <ContentInputItem>
+            <FormInputs from='forgot' formStep={step} />
+          </ContentInputItem>
+        </ContentInputGrid>
+        <ContentButtonGrid>
+          <ContentButtonItem>
+            <ContainedBtn onClick={handleNext}>
+              {step === 1 ? "Recover Your Password" : "Next"}
+            </ContainedBtn>
+          </ContentButtonItem>
           {step !== 1 && (
-            <>
-              <StyledButton variant='text' onClick={returnToLogin}>
-                Go back
-              </StyledButton>
-            </>
+            <PasswordLinkItem>
+              <TextBtn onClick={returnToLogin}>Back to login</TextBtn>
+            </PasswordLinkItem>
           )}
-        </PasswordButtonsItem>
-      </PasswordGrid>
-    </ForgotPasswordWrapper>
+        </ContentButtonGrid>
+      </ContentGrid>
+    </ContentWrapper>
   );
 };
 
