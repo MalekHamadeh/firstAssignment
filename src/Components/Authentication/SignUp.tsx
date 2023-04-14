@@ -21,6 +21,7 @@ const Signup = () => {
     signUpTitle,
     step,
     setStep,
+    setIsSuccessfulSignUp,
     handleScreens,
   }: AuthenticationContextProps = useContext(AuthenticationContext);
 
@@ -31,14 +32,12 @@ const Signup = () => {
     console.log(register);
   }, [step]);
 
-  const goToLogin = () => {
-    handleScreens("Login");
-  };
   const handleNext = () => {
     if (step !== 2) {
       setStep(step + 1);
     } else {
       handleScreens("Login");
+      setIsSuccessfulSignUp(true);
       setStep(0);
     }
   };
@@ -53,7 +52,7 @@ const Signup = () => {
           <StyledText>{signUpTitle[step]}</StyledText>
         </TitleDesc>
         <ContentInputGrid>
-          <FormInputs from='signup' formStep={step} />
+          <FormInputs />
         </ContentInputGrid>
         <ContentButtonGrid>
           <ContentButtonItem>

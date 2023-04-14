@@ -5,13 +5,11 @@ import CompanyInformation from "./SignUpForm/CompanyInfo";
 import CheckEmail from "./SignUpForm/CheckEmail";
 
 import NewPassword from "./PasswordForm/NewPassword";
+import AuthenticationContext from "../../Context/AuthenticationContext";
 
-interface FormInputsProps {
-  from: string;
-  formStep: number;
-}
+const FormInputs = () => {
+  const { screen, step } = useContext(AuthenticationContext);
 
-const FormInputs = ({ from, formStep }: FormInputsProps) => {
   const displaySignUp = [
     <CheckEmail />,
     <CreateAccount />,
@@ -20,10 +18,10 @@ const FormInputs = ({ from, formStep }: FormInputsProps) => {
 
   const displayForgot = [<CheckEmail />, <NewPassword />];
 
-  if (from === "signup") {
-    return displaySignUp[formStep];
-  } else if (from === "forgot") {
-    return displayForgot[formStep];
+  if (screen === "SignUp") {
+    return displaySignUp[step];
+  } else if (screen === "ForgotPassword") {
+    return displayForgot[step];
   } else return null;
 };
 

@@ -11,9 +11,12 @@ import {
 } from "../Components/Authentication/StyledAuthentication";
 import logo from "../Images/Logo/roundRushLogo.svg";
 import AuthenticationComponent from "../Components/Authentication/AuthenticationComponent";
-import { AuthenticationProvider } from "../Context/AuthenticationContext";
+import { useContext } from "react";
+import AuthenticationContext from "../Context/AuthenticationContext";
 
 const Authentication = () => {
+  const { screen } = useContext(AuthenticationContext);
+
   return (
     <Outline>
       <HeaderWrapper>
@@ -22,16 +25,23 @@ const Authentication = () => {
             <StyledLogo src={logo} />
           </LogoWrapper>
           <SloganWrapper>
-            <Slogan>The Optimized Workflow </Slogan>
-            <Slogan>Out Of The Box</Slogan>
+            <Slogan>
+              {screen === "SignUp" ? (
+                "Signing Up A New Account"
+              ) : (
+                <>
+                  The Optimized Workflow
+                  <br />
+                  Out Of The Box
+                </>
+              )}
+            </Slogan>
           </SloganWrapper>
         </HeaderContainer>
       </HeaderWrapper>
       <StyledPaperWrapper>
         <StyledPaper elevation={3}>
-          <AuthenticationProvider>
-            <AuthenticationComponent />
-          </AuthenticationProvider>
+          <AuthenticationComponent />
         </StyledPaper>
       </StyledPaperWrapper>
     </Outline>

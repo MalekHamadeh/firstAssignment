@@ -8,7 +8,6 @@ import {
   ContentButtonItem,
   StyledText,
   ContentTitle,
-  TitleDesc,
   ContentInputItem,
   PasswordLinkItem,
   ContentButtonGrid,
@@ -50,10 +49,8 @@ const ForgotPassword = () => {
       <ContentGrid>
         <TitleItem>
           <ContentTitle>Forgot your password</ContentTitle>
-        </TitleItem>
-        <TitleDesc>
           <StyledText>{passwordTitle[step]}</StyledText>
-        </TitleDesc>
+        </TitleItem>
         <ContentAlert>
           {canContinuePassword && (
             <Alert
@@ -64,7 +61,7 @@ const ForgotPassword = () => {
         </ContentAlert>
         <ContentInputGrid>
           <ContentInputItem>
-            <FormInputs from='forgot' formStep={step} />
+            <FormInputs />
           </ContentInputItem>
         </ContentInputGrid>
         <ContentButtonGrid>

@@ -97,8 +97,18 @@ const Login = () => {
         <ContentAlert>{alertController()}</ContentAlert>
         <ContentInputGrid>
           <ContentInputItem>
-            <StyledInput placeholder='Email' inputRef={emailRef} />
-            <StyledInput placeholder='Password' inputRef={passwordRef} />
+            <StyledInput
+              placeholder='Email'
+              inputRef={emailRef}
+              error={isError}
+              helperText={isError ? "Please enter a valid email" : ""}
+            />
+            <StyledInput
+              placeholder='Password'
+              inputRef={passwordRef}
+              error={isError}
+              helperText={isError ? "Please enter a valid password" : ""}
+            />
           </ContentInputItem>
         </ContentInputGrid>
         <ContentButtonGrid>

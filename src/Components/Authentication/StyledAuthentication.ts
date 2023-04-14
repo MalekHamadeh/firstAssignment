@@ -1,14 +1,5 @@
 import styled from "styled-components";
-import {
-  Box,
-  Paper,
-  Button,
-  Grid,
-  TextField,
-  Typography,
-  FormLabel,
-} from "@mui/material";
-import { StyledInput } from "../Shared/StyledShared";
+import { Box, Paper, Button, Grid, Typography, Checkbox } from "@mui/material";
 
 interface ButtonProps {
   register?: boolean;
@@ -31,7 +22,7 @@ export const HeaderWrapper = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 40%;
+  height: 20%;
 `;
 
 export const HeaderContainer = styled.div`
@@ -44,7 +35,7 @@ export const HeaderContainer = styled.div`
 
 export const LogoWrapper = styled.div`
   width: 100%;
-  height: 50%;
+  height: 80%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -52,7 +43,7 @@ export const LogoWrapper = styled.div`
 
 export const SloganWrapper = styled.div`
   width: 100%;
-  height: 10%;
+  height: 20%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -69,10 +60,11 @@ export const Slogan = styled(Typography)`
     font-family: Inter;
     font-style: normal;
     font-weight: 500;
-    font-size: 1rm;
-    line-height: 2rem;
+    font-size: 0.83rem;
+    line-height: 1.66rem;
+    text-align: center;
     text-transform: uppercase;
-    letter-spacing: 0.375rem;
+    letter-spacing: 0.41rem;
   }
 `;
 
@@ -81,13 +73,13 @@ export const StyledPaperWrapper = styled.div`
   height: 100%;
   display: flex;
   justify-content: center;
-  margin-top: 3rem;
+  margin-top: 4rem;
 `;
 
 export const StyledPaper = styled(Paper)`
   && {
     height: fit-content;
-    width: 37.43vw;
+    width: fit-content;
     display: flex;
     justify-content: center;
   }
@@ -100,10 +92,7 @@ export const AuthenticationWrapper = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
 `;
-
-// the && opertator is used because Material-Ui has a higher specificity than our CSS so in order to override the MaterialUI CSS we use && instead of !important
 
 export const ContentWrapper = styled.div`
   height: fit-content;
@@ -112,9 +101,28 @@ export const ContentWrapper = styled.div`
   justify-content: center;
 `;
 
-export const ContentGrid = styled(Grid).attrs({ container: true })`
+const GridContainer = styled(Grid).attrs({ container: true })``;
+
+const GridItem = styled(Grid).attrs({ item: true })`
   && {
-    margin: 4rem;
+    width: 24vw;
+    display: flex;
+    justify-content: center;
+  }
+`;
+const ItemNestedGrid = styled(Grid).attrs({ container: true, item: true })`
+  && {
+    display: flex;
+    width: 24vw;
+    justify-content: center;
+    height: fit-content;
+    gap: 1rem;
+
+`;
+
+export const ContentGrid = styled(GridContainer)`
+  && {
+    margin: 4rem 4rem;
     height: fit-content;
     width: fit-content;
     flex-direction: column;
@@ -125,13 +133,11 @@ export const ContentGrid = styled(Grid).attrs({ container: true })`
   }
 `;
 
-export const TitleItem = styled(Grid).attrs({ item: true })`
+export const TitleItem = styled(ItemNestedGrid)`
   && {
-    display: flex;
-    width: 24vw;
-    height: fit-content;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
+    gap: 1.5rem;
   }
 `;
 
@@ -140,85 +146,52 @@ export const ContentTitle = styled(Typography)`
     font-family: "Rubik", sans sheriff;
     font-style: normal;
     font-weight: 400;
-    font-size: 2rem;
+    font-size: 1.52rem;
     line-height: 1.25rem;
   }
 `;
 
-export const TitleDesc = styled(Grid).attrs({ item: true })`
+export const TitleDesc = styled(GridItem)`
   && {
-    width: 24vw;
-    height: fit-content;
     margin-bottom: 1rem;
-    display: flex;
-    justify-content: center;
   }
 `;
 
 export const StyledText = styled(Typography)`
   && {
     font-family: "Rubik", sans-serif;
-    color: ${({ variant }) => (variant === "h4" ? "#000000" : "#5A6171")};
+    font-style: normal;
+    font-weight: 400;
+    font-size: 0.97rem;
+    color: #5a6171;
   }
 `;
 
-export const ContentAlert = styled(Grid).attrs({ item: true })`
+export const ContentAlert = styled(GridItem)`
   && {
-    width: 24vw;
-    height: fit-content;
-    display: flex;
-    justify-content: center;
     align-items: center;
   }
 `;
 
-export const ContentInputGrid = styled(Grid).attrs({
-  container: true,
-  item: true,
-})`
+export const ContentInputGrid = styled(ItemNestedGrid)`
   && {
-    display: flex;
-    width: 24vw;
-    justify-content: center;
-    gap: 1rem;
     height: auto;
     flex-direction: rows;
   }
 `;
 
-export const ContentInputItem = styled(Grid).attrs({
-  container: true,
-  item: true,
-})`
+export const ContentInputItem = styled(ItemNestedGrid)`
   && {
-    display: flex;
-    width: 24vw;
-    justify-content: center;
-    gap: 1rem;
-    height: fit-content;
     flex-direction: rows;
   }
 `;
 
-export const ContentButtonGrid = styled(Grid).attrs({
-  container: true,
-  item: true,
-})`
-  && {
-    display: flex;
-    width: 24vw;
-    height: fit-content;
-    gap: 1rem;
-  }
-`;
+export const ContentButtonGrid = styled(ItemNestedGrid)``;
 
-export const ContentButtonItem = styled(Grid).attrs({ item: true })`
+export const ContentButtonItem = styled(GridItem)`
   && {
     margin-top: 1rem;
-    display: flex;
-    width: 24vw;
     height: auto;
-    justify-content: center;
   }
 `;
 
@@ -250,11 +223,9 @@ export const TextBtn = styled(StyledButton).attrs({ variant: "text" })`
   }
 `;
 
-export const ContentLinksItem = styled(Grid).attrs({ item: true })`
+export const ContentLinksItem = styled(GridItem)`
   && {
-    display: flex;
     height: auto;
-    width: 24vw;
     justify-content: space-between;
     align-items: end;
   }
@@ -287,53 +258,36 @@ export const PasswordLinkItem = styled(ContentLinksItem)`
 
 //#endregion
 
-//#region Styling for the SignUp Component
-
-export const SignUpWrapper = styled(ContentWrapper)``;
-
-export const SignUpGrid = styled(Grid).attrs({ container: true })`
-  && {
-    height: 100%;
-    width: 100%;
-    flex-direction: rows;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-`;
-
-export const SignUpTitleItem = styled(Grid).attrs({ item: true })`
-  && {
-    height: 20%;
-    width: 90%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-`;
-
-export const SignUpInputItem = styled(Grid).attrs({ item: true })`
-   {
-    && {
-      height: auto;
-      width: 90%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-  }
-`;
-
-export const SignUpButtonsItem = styled(Grid).attrs({ item: true })`
-  && {
-    height: 20%;
-    width: 90%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-`;
-
-//#endregion
-
 //#region Styling for the CompanyInfo Component
+export const TermsWrapper = styled.div`
+  display: flex;
+  width: 100%;
+`;
+
+export const TermsCheckboxWrapper = styled.div`
+  width: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const TermsCheckBox = styled(Checkbox).attrs({})`
+  && .MuiCheckbox-root {
+  }
+`;
+
+export const TermsTextWrapper = styled.div`
+  width: 100%;
+`;
+
+export const TermsText = styled(Typography)`
+&&{
+  font-family: Rubik, sans-serif,
+  font-style: normal;
+  forn-weight: 400;
+  font-size: 1rem;
+  line-height: 1.8rem;
+  color: #5A6171;
+}
+`;
+//#endregion

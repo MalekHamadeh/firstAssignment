@@ -32,8 +32,8 @@ export const StyledAlert = styled(Alert)`
     font-family: Rubik, sans-serif;
     font-style: normal;
     font-weight: 400;
-    line-height: 1.5rem;
-    font-size: 1rem;
+    line-height: 1.25rem;
+    font-size: 0.883rem;
     color: ${({ severity }) => (severity === "error" ? "#fd5461" : "#29C293")};
   }
   & .MuiAlert-icon {
@@ -70,6 +70,7 @@ export const IconContent = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: green;
 `;
 
 export const ProjectNameAbb = styled(Typography).attrs({ variant: "h6" })`
@@ -121,11 +122,11 @@ export const StyledInput = styled(TextField).attrs({
     display: flex;
     align-items: center;
   }
-
   fieldset {
     border-color: #d9dbde;
   }
   && .MuiOutlinedInput-root {
+    font-size: 0.97rem;
     &.Mui-focused {
       border: none;
       fieldset {
@@ -144,9 +145,14 @@ export const StyledInput = styled(TextField).attrs({
     font-family: "Rubik";
     font-style: normal;
     font-weight: 400;
-    font-size: 12px;
+    font-size: 0.833rem;
     padding-left: 0.9rem;
     transform: translate(-0.2rem, -1.3rem) scale(1);
+  }
+
+  && .MuiFormHelperText-root {
+    width: 100%;
+    justify-items: start;
   }
 `;
 

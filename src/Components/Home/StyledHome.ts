@@ -21,12 +21,10 @@ export const HeroSectionWrapper = styled.div`
 
 //#region HeroSection Component
 export const StyledHeroWrapper = styled.div`
-display: flex
+display: flexG
 flex-direction: rows;
 height: 100%;
 width: 100%;
-
-
 `;
 
 export const StyledHeroHeader = styled.div`
