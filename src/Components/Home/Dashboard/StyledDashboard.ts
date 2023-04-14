@@ -69,6 +69,7 @@ export const GridItemContent = styled(Grid).attrs({
     border-radius: 1rem;
     flex-direction: column;
     justify-content: space-between;
+    margin-top: 2rem;
   }
 `;
 
@@ -87,12 +88,13 @@ export const InfoGrid = styled(Grid).attrs({ container: true, item: true })`
 
 export const TopPictureWrapperItem = styled(Grid).attrs({ item: true })`
   && {
-    height: 100%;
+    height: 120%;
+    width: 35%;
     display: flex;
+    margin-top: -2.2rem;
     border-radius: 1rem;
-    margin-right: 4rem;
-    margin-left: -2rem;
-    margin-top: -2rem;
+    margin-left: 2.5rem;
+    // background-color: blue;
   }
 `;
 export const InfoGridItem = styled(Grid).attrs({ item: true })``;
@@ -121,13 +123,13 @@ export const Text = styled(Typography).attrs({ variant: "h2" })`
 `;
 
 export const StyledImage = styled.img<ImageSource>`
-  height: 115%;
-  width: 115%;
+  object-fit: cover;
 `;
 
 export const BottomGridItem = styled(Grid).attrs({ item: true })`
   && {
     height: 60%;
+    width: 90%;
     margin-left: 1.8rem;
     flex-grow: 1;
   }
@@ -158,41 +160,14 @@ export const ProjectTitle = styled(Typography).attrs({ variant: "h2" })`
 
 export const ContentGridItem = styled(Grid).attrs({ item: true, xs: 12 })`
   height: 90%;
-`;
-
-export const ContentWrapper = styled.div`
-  height: 80%;
-  width: 85%;
-`;
-
-export const ContentGrid = styled(Grid).attrs({
-  container: true,
-  columns: 10,
-  rowSpacing: 1,
-})`
-  && {
-    flex-direction: row;
-    height: 100%;
-    width: 90%;
-  }
-`;
-
-export const ContentItem = styled(Grid).attrs({ item: true, xs: 2 })`
-  display: flex;
-`;
-
-export const ContentItemWrapper = styled.div`
   width: 100%;
-  height: 100%;
-  display: flex;
-  padding-top: 0.5rem;
-  justify-content: center;
 `;
-
 //#endregion
 
 //#region Right Component
-export const RightGridItem = styled(Grid).attrs({ item: true })`
+export const RightGridItem = styled(Grid).attrs({
+  item: true,
+})`
   && {
     flex-grow: 1.2;
   }
@@ -201,28 +176,29 @@ export const RightGridItem = styled(Grid).attrs({ item: true })`
 export const RightWrapper = styled(Grid).attrs({ container: true })`
   height: 100%;
   width: 100%;
+
+  display: flex;
+  justify-content: center;
 `;
 
-export const RightWrapperTitle = styled(Grid).attrs({ item: true })`
+export const RightWrapperTitle = styled(Grid).attrs({
+  container: true,
+  item: true,
+  xs: 12,
+})`
   && {
     height: 10%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    padding-top: 2rem;
-  }
-`;
-export const TitleContent = styled(Grid).attrs({ container: true })`
-  && {
-    height: 100%;
     width: 95%;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    padding-left: 1rem;
   }
 `;
 
-export const TitleContentItem = styled(Grid).attrs({ item: true })``;
+export const TitleContentItem = styled(Grid).attrs({ item: true })`
+  display: flex;
+  align-items: end;
+`;
 
 export const RightProjectTitle = styled(Typography).attrs({ variant: "h2" })`
   && {
@@ -243,6 +219,10 @@ export const GoToProjectButton = styled(IconButton).attrs({})`
     font-size: 0.75rem;
     line-height: 0.875rem;
     color: #838895;
+    height: 1rem;
+    &:hover {
+      background-color: transparent;
+    }
   }
 `;
 
@@ -252,12 +232,13 @@ export const GoToIcon = styled.img`
   padding-left: 0.5rem;
 `;
 
-export const RightWrapperToDos = styled(Grid).attrs({ item: true })`
-  && {
-    width: 100%;
-    background-color: blue;
-  }
-  height: 40%;
+export const RightWrapperToDos = styled(Grid).attrs({
+  item: true,
+  xs: 12,
+})`
+  width: 100%;
+
+  height: 45%;
   display: flex;
   justify-content: center;
 `;
@@ -265,16 +246,15 @@ export const RightWrapperToDos = styled(Grid).attrs({ item: true })`
 export const TaskListWrapper = styled.div`
   height: 100%;
   width: 95%;
-  background-color: white;
+  // background-color: yellow;
 `;
 
 export const RightWrapperReview = styled(Grid).attrs({ item: true, xs: 12 })`
   && {
     width: 100%;
-    background-color: blue;
+    height: 45%;
+    background-color: green;
   }
-  height: 40%;
-  border-top: 5px solid black;
 `;
 
 //#endregion

@@ -6,31 +6,31 @@ import {
   RightWrapperReview,
   RightWrapperTitle,
   RightWrapperToDos,
-  TitleContent,
   TitleContentItem,
   GoToIcon,
   TaskListWrapper,
 } from "../StyledDashboard";
 import backIcon from "../../../../Images/Icons/backIcon.svg";
+import CompressedTasks from "../../../Shared/CompressedTasks";
 
 const Right = () => {
   return (
     <RightWrapper>
       <RightWrapperTitle>
-        <TitleContent>
-          <TitleContentItem>
-            <RightProjectTitle>Marketing</RightProjectTitle>
-          </TitleContentItem>
-          <TitleContentItem>
-            <GoToProjectButton>
-              Go to Project
-              <GoToIcon src={backIcon} />
-            </GoToProjectButton>
-          </TitleContentItem>
-        </TitleContent>
+        <TitleContentItem>
+          <RightProjectTitle>Marketing</RightProjectTitle>
+        </TitleContentItem>
+        <TitleContentItem>
+          <GoToProjectButton>
+            Go to Project
+            <GoToIcon src={backIcon} />
+          </GoToProjectButton>
+        </TitleContentItem>
       </RightWrapperTitle>
       <RightWrapperToDos>
-        <TaskListWrapper>TOdo</TaskListWrapper>
+        <TaskListWrapper>
+          <CompressedTasks title='Todos' />
+        </TaskListWrapper>
       </RightWrapperToDos>
       <RightWrapperReview>Pending Review</RightWrapperReview>
     </RightWrapper>

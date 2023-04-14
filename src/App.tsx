@@ -8,21 +8,19 @@ import { AuthenticationProvider } from "./Context/AuthenticationContext";
 
 function App() {
   return (
-    <DrawerProvider>
-      <Router>
-        <Routes>
-          <Route
-            path='/'
-            element={
-              <AuthenticationProvider>
-                <Authentication />
-              </AuthenticationProvider>
-            }
-          />
-          <Route path='/home' element={<Home />} />
-        </Routes>
-      </Router>
-    </DrawerProvider>
+    <Router>
+      <Routes>
+        <Route
+          path='/'
+          element={
+            <AuthenticationProvider>
+              <Authentication />
+            </AuthenticationProvider>
+          }
+        />
+        <Route path='/home' element={<Home />} />
+      </Routes>
+    </Router>
   );
 }
 

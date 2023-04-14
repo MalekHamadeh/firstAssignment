@@ -117,10 +117,7 @@ export const DrawerProvider = ({ children }: DrawerProviderProps) => {
     component: <Dashboard />,
   });
 
-  const handleChanges: handleDataChanages = (
-    title: string,
-    component: JSX.Element
-  ) => {
+  const handleChanges: handleDataChanages = (title, component) => {
     setData({
       title,
       component,

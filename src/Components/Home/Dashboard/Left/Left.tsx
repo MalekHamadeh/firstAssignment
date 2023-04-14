@@ -14,10 +14,6 @@ import {
   TitleGridItem,
   ContentGridItem,
   ProjectTitle,
-  ContentWrapper,
-  ContentGrid,
-  ContentItem,
-  ContentItemWrapper,
 } from "../StyledDashboard";
 import WelcomPic from "../../../../Images/Pictures/WelcomePic.svg";
 import FavoriteProjectList from "../../../Shared/FavoriteProjectList";
@@ -34,8 +30,8 @@ const Left = () => {
             <InfoGridItem>
               <Text>
                 in <strong>Marketing </strong> You have <strong>14 </strong>
-                tasks to accomplish and <strong>10 </strong> <br /> review left
-                in your current iteration
+                tasks to accomplish and <strong>10 </strong> review left in your
+                current iteration
               </Text>
             </InfoGridItem>
           </InfoGrid>
@@ -50,45 +46,7 @@ const Left = () => {
             <ProjectTitle>Favorite Project</ProjectTitle>
           </TitleGridItem>
           <ContentGridItem>
-            <ContentWrapper>
-              <ContentGrid>
-                <ContentItem>
-                  <ContentItemWrapper>
-                    <FavoriteProjectList />
-                  </ContentItemWrapper>
-                </ContentItem>
-                <ContentItem>
-                  <ContentItemWrapper>
-                    <FavoriteProjectList />
-                  </ContentItemWrapper>
-                </ContentItem>
-                <ContentItem>
-                  <ContentItemWrapper>
-                    <FavoriteProjectList />
-                  </ContentItemWrapper>
-                </ContentItem>
-                <ContentItem>
-                  <ContentItemWrapper>
-                    <FavoriteProjectList />
-                  </ContentItemWrapper>
-                </ContentItem>
-                <ContentItem>
-                  <ContentItemWrapper>
-                    <FavoriteProjectList />
-                  </ContentItemWrapper>
-                </ContentItem>
-                <ContentItem>
-                  <ContentItemWrapper>
-                    <FavoriteProjectList />
-                  </ContentItemWrapper>
-                </ContentItem>
-                <ContentItem>
-                  <ContentItemWrapper>
-                    <FavoriteProjectList />
-                  </ContentItemWrapper>
-                </ContentItem>
-              </ContentGrid>
-            </ContentWrapper>
+            <FavoriteProjectList />
           </ContentGridItem>
         </BottomGrid>
       </BottomGridItem>

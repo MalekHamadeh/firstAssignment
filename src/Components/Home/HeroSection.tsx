@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import {
   StyledHeaderIconWrapper,
   StyledHeaderTitle,
@@ -10,20 +10,20 @@ import {
   StyledDivider,
   StyledHeroHeaderContent,
 } from "./StyledHome";
-import { Divider } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 import DrawerContext from "../../Context/DrawerContext";
 
 const HeroSection = () => {
   const [shouldShowIcon, setShouldShowIcon] = useState(true);
-  const { data } = React.useContext(DrawerContext);
+  const { data } = useContext(DrawerContext);
+  const { title, component } = data;
   return (
     <StyledHeroWrapper>
       <StyledHeroHeader>
         <StyledHeroHeaderContent>
           <StyledHeaderTitleWrapper>
-            <StyledHeaderTitle>{data.title}</StyledHeaderTitle>
+            <StyledHeaderTitle>{title}</StyledHeaderTitle>
           </StyledHeaderTitleWrapper>
           {shouldShowIcon && (
             <StyledHeaderIconWrapper>
@@ -38,7 +38,7 @@ const HeroSection = () => {
         </StyledHeroHeaderContent>
       </StyledHeroHeader>
       <StyledDivider />
-      <StyledHeroBody>{data.component}</StyledHeroBody>
+      <StyledHeroBody>{component}</StyledHeroBody>
     </StyledHeroWrapper>
   );
 };

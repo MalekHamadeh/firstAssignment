@@ -6,16 +6,22 @@ import {
   HeroSectionWrapper,
   HomeWrapper,
 } from "../Components/Home/StyledHome";
+import { HomeProvider } from "../Context/HomeContext";
+import { DrawerProvider } from "../Context/DrawerContext";
 
 const Home = () => {
   return (
     <HomeWrapper>
-      <DrawerWrapper>
-        <Drawer />
-      </DrawerWrapper>
-      <HeroSectionWrapper>
-        <HeroSection />
-      </HeroSectionWrapper>
+      <DrawerProvider>
+        <DrawerWrapper>
+          <Drawer />
+        </DrawerWrapper>
+        <HeroSectionWrapper>
+          <HomeProvider>
+            <HeroSection />
+          </HomeProvider>
+        </HeroSectionWrapper>
+      </DrawerProvider>
     </HomeWrapper>
   );
 };
