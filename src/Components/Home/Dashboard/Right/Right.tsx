@@ -32,7 +32,11 @@ const Right = () => {
           <CompressedTasks title='Todos' />
         </TaskListWrapper>
       </RightWrapperToDos>
-      <RightWrapperReview>Pending Review</RightWrapperReview>
+      <RightWrapperReview>
+        <TaskListWrapper>
+          <CompressedTasks title='Reviews' />
+        </TaskListWrapper>
+      </RightWrapperReview>
     </RightWrapper>
   );
 };

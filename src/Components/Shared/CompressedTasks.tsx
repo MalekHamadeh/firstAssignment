@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   ListGrid,
   ListItemGrid,
@@ -7,13 +7,29 @@ import {
   ListTitleName,
   TitleChip,
   TitleName,
+  ListGridItem,
+  ItemPriority,
+  ItemStatus,
+  ItemTitle,
+  ItemDescription,
+  ItemProject,
+  PriorityListItem,
+  StatusListItem,
+  TitleListItem,
+  DescListItem,
+  ProjectListItem,
 } from "./StyledShared";
+import HomeContext from "../../Context/HomeContext";
+import { Divider } from "@mui/material";
+import { StyledDivider } from "../Home/StyledHome";
 
 interface CompressedTasksProps {
   title: string;
 }
 
 const CompressedTasks = ({ title }: CompressedTasksProps) => {
+  const { taskList, handleTaskIcons, handleTaskPriority } =
+    useContext(HomeContext);
   return (
     <ListGrid>
       <ListTitleItem>
@@ -21,10 +37,56 @@ const CompressedTasks = ({ title }: CompressedTasksProps) => {
           <TitleName>{title}</TitleName>
         </ListTitleName>
         <ListTitleChip>
-          <TitleChip label={12} />
+          <TitleChip label={title === "Todos" ? "12" : "24"} title={title} />
         </ListTitleChip>
       </ListTitleItem>
-      <ListItemGrid></ListItemGrid>
+      <ListItemGrid>
+        {taskList.map(
+          (
+            {
+              priority,
+              icon,
+              title,
+              description,
+              projectName,
+              projectNameColor,
+            },
+            index
+          ) => (
+            <>
+              <ListGridItem key={index}>
+                <PriorityListItem>
+                  <ItemPriority src={handleTaskPriority(priority)} />
+                </PriorityListItem>
+                <StatusListItem>
+                  <ItemStatus src={handleTaskIcons(icon)} />
+                </StatusListItem>
+                <TitleListItem>
+                  <ItemTitle>{title}</ItemTitle>
+                </TitleListItem>
+                <DescListItem>
+                  <ItemDescription>{description}</ItemDescription>
+                </DescListItem>
+                <ProjectListItem>
+                  <ItemProject
+                    projectColor={projectNameColor}
+                    label={projectName}
+                  />
+                </ProjectListItem>
+              </ListGridItem>
+              <Divider
+                sx={{
+                  width: "100%",
+                  height: "1px",
+                  backgroundColor: "#F4F6FC",
+                  visibility:
+                    index === taskList.length - 1 ? "hidden" : "visible",
+                }}
+              />
+            </>
+          )
+        )}
+      </ListItemGrid>
     </ListGrid>
   );
 };

@@ -1,24 +1,31 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
+
 import { styled, Theme, CSSObject } from "@mui/material/styles";
-import Box from "@mui/material/Box";
+
+import {
+  Box,
+  List,
+  CssBaseline,
+  Divider,
+  IconButton,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+  Icon,
+} from "@mui/material";
 import MuiDrawer from "@mui/material/Drawer";
-import List from "@mui/material/List";
-import CssBaseline from "@mui/material/CssBaseline";
-import Divider from "@mui/material/Divider";
-import IconButton from "@mui/material/IconButton";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-import smallLogo from "../../../Images/Logo/SmallLogo.svg";
-import TeamIcon from "../../../Images/Icons/teamIcon.svg";
 import { ExpandLess, ExpandMore } from "@mui/icons-material";
-import MenuIcon from "../../../Images/Icons/menuIcon.svg";
-import InfoIcon from "../../../Images/Icons/infoIcon.svg";
-import LogOutIcon from "../../../Images/Icons/logoutIcon.svg";
-import { Icon } from "@mui/material";
+
+import smallLogo from "../../../Images/Logo/SmallLogo.svg";
+import TeamIcon from "../../../Images/Icons/DrawerIcons/teamIcon.svg";
+import MenuIcon from "../../../Images/Icons/DrawerIcons/menuIcon.svg";
+import InfoIcon from "../../../Images/Icons/DrawerIcons/infoIcon.svg";
+import LogOutIcon from "../../../Images/Icons/DrawerIcons/logoutIcon.svg";
+
 import { DrawerContextProps } from "../../../Context/DrawerContext";
 import DrawerContext, { subItems } from "../../../Context/DrawerContext";
+
 import NeededDrawerList from "./NeededDraweList";
 
 const drawerWidth = 240;

@@ -81,8 +81,8 @@ export const StyledHeroBody = styled.div`
 
 export const StyledDivider = styled(Divider)`
   && {
-    background-color: #eaebed;
     margin-left: 4rem;
+    background-color: #eaebed;
   }
 `;
 //#endregion

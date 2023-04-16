@@ -12,6 +12,14 @@ interface ProjectIconBC {
   iconColor: string;
 }
 
+interface TitleChip {
+  title: string;
+}
+
+interface ItemProject {
+  projectColor: string;
+}
+
 const GridContainer = styled(Grid).attrs({
   container: true,
 })``;
@@ -220,7 +228,7 @@ export const ListGrid = styled(GridContainer)`
     height: 100%;
     width: 100%;
     display: flex;
-    padding-top: 2rem;
+    padding-top: 1rem;
   }
 `;
 
@@ -258,13 +266,14 @@ export const TitleChip = styled(Chip).attrs({
   size: "small",
 })`
   && {
-    background-color: #e8f0fe;
+    background-color: ${({ title }) =>
+      title === "Todos" ? "rgba(0, 121, 255, 0.3)" : "rgba(245, 166, 35, 0.3)"};
     height: 1.2rem;
 
     & .MuiChip-label {
-      color: #0079ff;
+      color: ${({ title }) => (title === "Todos" ? "#0079ff" : "#F5A623")};
       text-align: center;
-      margin-left: -0.08rem;
+      opacity: 1;
     }
   }
 `;
@@ -272,6 +281,101 @@ export const ListItemGrid = styled(ItemNestedGrid)`
   && {
     height: 90%;
     width: 100%;
-    background-color: yellow;
+    padding-top: 1rem;
   }
 `;
+
+export const ListGridItem = styled(ItemNestedGrid).attrs({
+  xs: 12,
+})`
+  && {
+    width: 100%;
+    height: 10%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+`;
+
+export const PriorityListItem = styled(GridItem)`
+  && {
+    width: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+`;
+export const ItemPriority = styled.img`
+  && {
+    width: 24px;
+    height: 24px;
+  }
+`;
+export const StatusListItem = styled(GridItem)`
+  && {
+    width: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+`;
+export const ItemStatus = styled.img`
+  && {
+    width: 24px;
+    height: 24px;
+  }
+`;
+export const TitleListItem = styled(GridItem)`
+  && {
+    width: 10%;
+  }
+`;
+export const ItemTitle = styled(Typography)`
+  && {
+    font-family: "Rubik";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+  }
+`;
+export const DescListItem = styled(GridItem)`
+  && {
+    width: 50%;
+  }
+`;
+export const ItemDescription = styled(Typography)`
+  && {
+    font-family: "Rubik";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+  }
+`;
+export const ProjectListItem = styled(GridItem)`
+  && {
+    width: 25%;
+    display: flex;
+    justify-content: flex-end;
+  }
+`;
+export const ItemProject = styled(Chip).attrs({
+  size: "small",
+})<ItemProject>`
+  && {
+    background-color: ${({ projectColor }) => projectColor};
+
+    & .MuiChip-label {
+      font-family: "Rubik";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 10px;
+      text-align: center;
+      color: #ffffff;
+    }
+  }
+`;
+
+//#endregion

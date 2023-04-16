@@ -1,14 +1,14 @@
-import React from "react";
-import { createContext, useEffect, useState } from "react";
+import React, { createContext, useState } from "react";
+
 import Dashboard from "../Components/Home/Dashboard/Dashboard";
 import PersonalBoard from "../Components/Home/PersonalBoard";
 import Settings from "../Components/Home/SpaceSettings/Settings";
 import YellowTech from "../Components/Home/YellowTech";
-import BrotliLogo from "../Images/Icons/brotliLogo.svg";
-import PersonalBoardIcon from "../Images/Icons/personalBoardIcon.svg";
-import HomeIcon from "../Images/Icons/homeIcon.svg";
-import SettingsIcon from "../Images/Icons/settingsIcon.svg";
-// import { Home } from "@mui/icons-material";
+
+import BrotliLogo from "../Images/Icons/DrawerIcons/brotliLogo.svg";
+import PersonalBoardIcon from "../Images/Icons/DrawerIcons/personalBoardIcon.svg";
+import HomeIcon from "../Images/Icons/DrawerIcons/homeIcon.svg";
+import SettingsIcon from "../Images/Icons/DrawerIcons/settingsIcon.svg";
 
 const DrawerContext = createContext<DrawerContextProps>(
   {} as DrawerContextProps

@@ -23,8 +23,9 @@ export const DashboardGrid = styled(Grid).attrs({ container: true })`
 
 export const LeftGridItem = styled(Grid).attrs({ item: true })`
   && {
-    flex-grow: 1;
     margin-top: 3rem;
+    height: 95%;
+    width: 65%;
   }
 `;
 
@@ -169,14 +170,16 @@ export const RightGridItem = styled(Grid).attrs({
   item: true,
 })`
   && {
-    flex-grow: 1.2;
+    height: 100%;
+    width: 34.92%;
   }
 `;
 
-export const RightWrapper = styled(Grid).attrs({ container: true })`
-  height: 100%;
+export const RightWrapper = styled(Grid).attrs({
+  container: true,
+})`
+  height: 95%;
   width: 100%;
-
   display: flex;
   justify-content: center;
 `;
@@ -197,6 +200,7 @@ export const RightWrapperTitle = styled(Grid).attrs({
 
 export const TitleContentItem = styled(Grid).attrs({ item: true })`
   display: flex;
+  padding-top: 1rem;
   align-items: end;
 `;
 
@@ -237,8 +241,7 @@ export const RightWrapperToDos = styled(Grid).attrs({
   xs: 12,
 })`
   width: 100%;
-
-  height: 45%;
+  height: 40%;
   display: flex;
   justify-content: center;
 `;
@@ -246,14 +249,14 @@ export const RightWrapperToDos = styled(Grid).attrs({
 export const TaskListWrapper = styled.div`
   height: 100%;
   width: 95%;
-  // background-color: yellow;
 `;
 
 export const RightWrapperReview = styled(Grid).attrs({ item: true, xs: 12 })`
   && {
     width: 100%;
-    height: 45%;
-    background-color: green;
+    height: 40%;
+    display: flex;
+    justify-content: center;
   }
 `;
 
