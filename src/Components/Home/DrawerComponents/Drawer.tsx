@@ -23,10 +23,10 @@ import MenuIcon from "../../../Images/Icons/DrawerIcons/menuIcon.svg";
 import InfoIcon from "../../../Images/Icons/DrawerIcons/infoIcon.svg";
 import LogOutIcon from "../../../Images/Icons/DrawerIcons/logoutIcon.svg";
 
-import { DrawerContextProps } from "../../../Context/DrawerContext";
-import DrawerContext, { subItems } from "../../../Context/DrawerContext";
+import DrawerContext from "../../../Context/DrawerContext";
 
 import NeededDrawerList from "./NeededDraweList";
+import { DrawerContextProps, subItems } from "../../../Context/ContextTypes";
 
 const drawerWidth = 240;
 

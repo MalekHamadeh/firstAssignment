@@ -1,4 +1,7 @@
 import React, { useRef, useContext, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
+import { StyledInput } from "../Shared/StyledShared";
 import {
   ContentWrapper,
   ContentGrid,
@@ -13,10 +16,10 @@ import {
   ContainedBtn,
   TextBtn,
 } from "./StyledAuthentication";
-import { useNavigate } from "react-router-dom";
+
 import Alert from "../Shared/Alert";
+
 import AuthenticationContext from "../../Context/AuthenticationContext";
-import { StyledInput } from "../Shared/StyledShared";
 
 const Login = () => {
   const emailRef = useRef<HTMLInputElement | null>(null);

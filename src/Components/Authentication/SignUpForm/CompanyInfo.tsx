@@ -1,6 +1,8 @@
 import React, { useState } from "react";
-import { StyledInput } from "../../Shared/StyledShared";
+
 import { Grid, MenuItem, Checkbox } from "@mui/material";
+
+import { StyledInput } from "../../Shared/StyledShared";
 import {
   TermsCheckBox,
   TermsCheckboxWrapper,

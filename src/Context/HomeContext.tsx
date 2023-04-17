@@ -9,30 +9,7 @@ import Task from "../Images/Icons/TaskIcons/task.svg";
 import Bug from "../Images/Icons/TaskIcons/bug.svg";
 import Macro from "../Images/Icons/TaskIcons/macro.svg";
 
-interface HomeContextProps {
-  projectList: {
-    name: string;
-    iconColor: string;
-  }[];
-
-  taskList: TaskListProps[];
-
-  handleTaskPriority: (priority: string) => string;
-  handleTaskIcons: (icon: string) => string;
-}
-
-interface TaskListProps {
-  priority: string;
-  icon: string;
-  title: string;
-  description: string;
-  projectName: string;
-  projectNameColor: string;
-}
-
-interface HomeProviderProps {
-  children: React.ReactNode;
-}
+import { HomeContextProps, HomeProviderProps } from "./ContextTypes";
 
 const HomeContext = createContext<HomeContextProps>({} as HomeContextProps);
 
@@ -159,9 +136,22 @@ export const HomeProvider = ({ children }: HomeProviderProps) => {
     }
   };
 
+  const [selectedContent, setSelectedContent] = useState("Info" as string);
+
+  const handleSelectedContent = (string: string) => {
+    setSelectedContent(string);
+  };
+
   return (
     <HomeContext.Provider
-      value={{ projectList, taskList, handleTaskPriority, handleTaskIcons }}
+      value={{
+        projectList,
+        taskList,
+        selectedContent,
+        handleTaskPriority,
+        handleTaskIcons,
+        handleSelectedContent,
+      }}
     >
       {children}
     </HomeContext.Provider>

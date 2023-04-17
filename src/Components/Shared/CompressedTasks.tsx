@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+
 import {
   ListGrid,
   ListItemGrid,
@@ -19,9 +20,10 @@ import {
   DescListItem,
   ProjectListItem,
 } from "./StyledShared";
-import HomeContext from "../../Context/HomeContext";
+
 import { Divider } from "@mui/material";
-import { StyledDivider } from "../Home/StyledHome";
+
+import HomeContext from "../../Context/HomeContext";
 
 interface CompressedTasksProps {
   title: string;

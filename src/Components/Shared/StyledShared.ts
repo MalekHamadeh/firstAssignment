@@ -6,6 +6,7 @@ import {
   TextField,
   Chip,
 } from "@mui/material";
+
 import styled from "styled-components";
 
 interface ProjectIconBC {
@@ -70,8 +71,7 @@ export const ProjectIconWrapper = styled.div`
   margin-top: 1rem;
 `;
 
-export const ProjectIconGrid = styled(Grid).attrs({
-  container: true,
+export const ProjectIconGrid = styled(GridContainer).attrs({
   direction: "row",
   columns: 12,
 })`
@@ -81,7 +81,7 @@ export const ProjectIconGrid = styled(Grid).attrs({
   }
 `;
 
-export const ProjectItem = styled(Grid).attrs({ item: true })`
+export const ProjectItem = styled(GridItem)`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -89,8 +89,7 @@ export const ProjectItem = styled(Grid).attrs({ item: true })`
   width: 19%;
 `;
 
-export const ProjectItemGrid = styled(Grid).attrs({
-  container: true,
+export const ProjectItemGrid = styled(GridContainer).attrs({
   direction: "column",
 })`
   && {
@@ -102,7 +101,7 @@ export const ProjectItemGrid = styled(Grid).attrs({
   }
 `;
 
-export const ProjectIcon = styled(Grid).attrs({ item: true })<ProjectIconBC>`
+export const ProjectIcon = styled(GridItem)<ProjectIconBC>`
   && {
     background-color: ${({ iconColor }) => iconColor};
     height: 60%;
@@ -126,9 +125,7 @@ export const ProjectNameAbb = styled(Typography).attrs({ variant: "h6" })`
   }
 `;
 
-export const ProjectNameWrapper = styled(Grid).attrs({
-  item: true,
-})`
+export const ProjectNameWrapper = styled(GridItem)`
   && {
     display: flex;
     justify-content: center;
@@ -139,7 +136,7 @@ export const ProjectNameWrapper = styled(Grid).attrs({
   }
 `;
 
-export const ProjectNameItem = styled(Grid).attrs({ item: true })`
+export const ProjectNameItem = styled(GridItem)`
   display: flex;
   justify-content: center;
   align-items: start;

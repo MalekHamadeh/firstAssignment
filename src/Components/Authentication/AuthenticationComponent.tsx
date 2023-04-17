@@ -1,9 +1,11 @@
 import React, { useEffect, useState, useContext } from "react";
-import Login from "./Login";
 
+import Login from "./Login";
 import Signup from "./SignUp";
 import ForgotPassword from "./ForgotPassword";
+
 import { AuthenticationWrapper } from "./StyledAuthentication";
+
 import AuthenticationContext from "../../Context/AuthenticationContext";
 
 const AuthenticationComponent = () => {

@@ -1,4 +1,5 @@
 import React, { useState, useContext } from "react";
+
 import {
   StyledHeaderIconWrapper,
   StyledHeaderTitle,
@@ -10,8 +11,10 @@ import {
   StyledDivider,
   StyledHeroHeaderContent,
 } from "./StyledHome";
+
 import AddIcon from "@mui/icons-material/Add";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
+
 import DrawerContext from "../../Context/DrawerContext";
 
 const HeroSection = () => {

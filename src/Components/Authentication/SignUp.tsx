@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+
 import FormInputs from "./FormInputs";
 import {
   ContainedBtn,
@@ -13,6 +14,7 @@ import {
   TitleDesc,
   TitleItem,
 } from "./StyledAuthentication";
+
 import { AuthenticationContextProps } from "../../Context/ContextTypes";
 import AuthenticationContext from "../../Context/AuthenticationContext";
 

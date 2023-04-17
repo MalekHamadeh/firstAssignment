@@ -10,8 +10,8 @@ interface ImageSource {
 //#region Dashboard Component
 export const DashboardWrapper = styled.div`
   height: 100%;
-  width: 100%;
-  margin-left: 2rem;
+  width: 98%;
+  padding-right: 1rem;
 `;
 
 export const DashboardGrid = styled(Grid).attrs({ container: true })`
@@ -31,10 +31,10 @@ export const LeftGridItem = styled(Grid).attrs({ item: true })`
 
 export const VerticalDivider = styled(Divider).attrs({
   orientation: "vertical",
+  light: true,
 })`
   && {
     height: 100%;
-    background-color: #eaebed;
   }
 `;
 

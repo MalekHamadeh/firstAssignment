@@ -1,4 +1,5 @@
 import React from "react";
+
 import {
   DashboardGrid,
   DashboardWrapper,
@@ -6,7 +7,7 @@ import {
   RightGridItem,
   VerticalDivider,
 } from "./StyledDashboard";
-import { Divider } from "@mui/material";
+
 import Left from "./Left/Left";
 import Right from "./Right/Right";
 

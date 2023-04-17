@@ -1,4 +1,5 @@
 import React from "react";
+
 import {
   GoToProjectButton,
   RightProjectTitle,
@@ -10,7 +11,9 @@ import {
   GoToIcon,
   TaskListWrapper,
 } from "../StyledDashboard";
+
 import backIcon from "../../../../Images/Icons/backIcon.svg";
+
 import CompressedTasks from "../../../Shared/CompressedTasks";
 
 const Right = () => {

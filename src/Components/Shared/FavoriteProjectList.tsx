@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+
 import {
   ProjectIconWrapper,
   ProjectIconGrid,
@@ -10,6 +11,7 @@ import {
   ProjectNameWrapper,
   ProjectName,
 } from "./StyledShared";
+
 import HomeContext from "../../Context/HomeContext";
 
 const FavoriteProjectList = () => {

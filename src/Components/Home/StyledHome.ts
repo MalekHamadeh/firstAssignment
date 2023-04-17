@@ -1,4 +1,4 @@
-import { IconButton, Typography, Grid, Divider } from "@mui/material";
+import { IconButton, Typography, Divider } from "@mui/material";
 import styled from "styled-components";
 
 //#region HomePage Styling
@@ -75,14 +75,15 @@ export const StyledHeroBody = styled.div`
   height: 93.5%;
   width: 100%;
   display: flex;
-  justify-content: center;
   z-index: 1;
+  justify-content: flex-end;
 `;
 
-export const StyledDivider = styled(Divider)`
+export const StyledDivider = styled(Divider).attrs({
+  light: true,
+})`
   && {
     margin-left: 4rem;
-    background-color: #eaebed;
   }
 `;
 //#endregion

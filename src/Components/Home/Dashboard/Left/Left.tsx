@@ -1,4 +1,5 @@
 import React from "react";
+
 import {
   BottomGridItem,
   LeftGrid,
@@ -15,7 +16,9 @@ import {
   ContentGridItem,
   ProjectTitle,
 } from "../StyledDashboard";
+
 import WelcomPic from "../../../../Images/Pictures/WelcomePic.svg";
+
 import FavoriteProjectList from "../../../Shared/FavoriteProjectList";
 
 const Left = () => {

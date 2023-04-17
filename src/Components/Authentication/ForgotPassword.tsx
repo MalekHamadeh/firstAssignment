@@ -1,4 +1,5 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
+
 import {
   ContentWrapper,
   ContentGrid,
@@ -14,8 +15,10 @@ import {
   ContainedBtn,
   TextBtn,
 } from "./StyledAuthentication";
+
 import FormInputs from "./FormInputs";
 import Alert from "../Shared/Alert";
+
 import AuthenticationContext from "../../Context/AuthenticationContext";
 import { AuthenticationContextProps } from "../../Context/ContextTypes";
 

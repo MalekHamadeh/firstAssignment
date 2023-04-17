@@ -10,41 +10,18 @@ import PersonalBoardIcon from "../Images/Icons/DrawerIcons/personalBoardIcon.svg
 import HomeIcon from "../Images/Icons/DrawerIcons/homeIcon.svg";
 import SettingsIcon from "../Images/Icons/DrawerIcons/settingsIcon.svg";
 
+import {
+  DrawerContextProps,
+  DrawerProviderProps,
+  NeededData,
+  handleDataChanages,
+  mainItemsArray,
+  subItemsArray,
+} from "./ContextTypes";
+
 const DrawerContext = createContext<DrawerContextProps>(
   {} as DrawerContextProps
 );
-
-interface DrawerProviderProps {
-  children: React.ReactNode;
-}
-
-type handleDataChanages = (title: string, component: JSX.Element) => void;
-
-interface mainItems {
-  icon: string;
-  title: string;
-  component: JSX.Element;
-}
-export interface subItems {
-  text: string;
-  iconColor: string;
-  title: string;
-}
-
-interface NeededData {
-  title: string;
-  component?: JSX.Element | null;
-}
-
-interface subItemsArray extends Array<subItems> {}
-interface mainItemsArray extends Array<mainItems> {}
-
-export interface DrawerContextProps {
-  mainItems: mainItemsArray;
-  subItems: subItemsArray;
-  data: NeededData;
-  handleChanges: handleDataChanages;
-}
 
 export const DrawerProvider = ({ children }: DrawerProviderProps) => {
   const [mainItems, setMainItems] = useState<mainItemsArray>([
