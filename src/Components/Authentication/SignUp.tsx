@@ -1,65 +1,70 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
+
 import FormInputs from "./FormInputs";
 import {
-  GridContainer,
-  GridItem,
+  ContainedBtn,
+  ContentButtonGrid,
+  ContentButtonItem,
+  ContentGrid,
+  ContentInputGrid,
+  ContentTitle,
+  ContentWrapper,
   StyledButton,
-  StyledInput,
   StyledText,
+  TitleDesc,
+  TitleItem,
 } from "./StyledAuthentication";
-import SignUpContext, { SignUpContextProps } from "../../Context/SignUpContext";
 
-interface SignupProps {
-  onClick: (string: String) => void;
-  successfulSignUp: (boolean: Boolean) => void;
-}
+import { AuthenticationContextProps } from "../../Context/ContextTypes";
+import AuthenticationContext from "../../Context/AuthenticationContext";
 
-const Signup = ({ onClick, successfulSignUp }: SignupProps) => {
-  const { title, step, setStep }: SignUpContextProps =
-    useContext(SignUpContext);
+const Signup = () => {
+  const {
+    signUpTitle,
+    step,
+    setStep,
+    setIsSuccessfulSignUp,
+    handleScreens,
+  }: AuthenticationContextProps = useContext(AuthenticationContext);
 
-  const goToLogin = () => {
-    onClick("Login");
-    successfulSignUp(true);
-  };
+  const [register, shouldRegister] = useState<boolean>(false);
+
+  useEffect(() => {
+    step === 2 && shouldRegister(true);
+    console.log(register);
+  }, [step]);
+
   const handleNext = () => {
-    setStep(step + 1);
+    if (step !== 2) {
+      setStep(step + 1);
+    } else {
+      handleScreens("Login");
+      setIsSuccessfulSignUp(true);
+      setStep(0);
+    }
   };
 
   return (
-    <GridContainer
-      direction='column'
-      justifyContent='center'
-      alignItems='center'
-      spacing={2}
-    >
-      <GridItem xs={1} />
-      <GridItem xs={1} />
-      <GridItem xs={1}>
-        <StyledText variant='h4'>Sign Up</StyledText>
-      </GridItem>
-      <GridItem xs={1} />
-      <GridItem xs={1}>
-        <StyledText variant='body1'>
-          {title[step as keyof { 0: string; 1: string; 2: string }]}
-        </StyledText>
-      </GridItem>
-      <GridItem xs={1} />
-      <GridItem xs={1}>
-        <FormInputs from='signup' />
-      </GridItem>
-      <GridItem xs={1}>
-        {step !== 2 ? (
-          <StyledButton variant='contained' onClick={handleNext}>
-            Next
-          </StyledButton>
-        ) : (
-          <StyledButton variant='contained' register={true} onClick={goToLogin}>
-            Register
-          </StyledButton>
-        )}
-      </GridItem>
-    </GridContainer>
+    <ContentWrapper>
+      <ContentGrid>
+        <TitleItem>
+          <ContentTitle>SignUp</ContentTitle>
+        </TitleItem>
+        <TitleDesc>
+          <StyledText>{signUpTitle[step]}</StyledText>
+        </TitleDesc>
+        <ContentInputGrid>
+          <FormInputs />
+        </ContentInputGrid>
+        <ContentButtonGrid>
+          <ContentButtonItem>
+            <ContainedBtn onClick={handleNext} register={register}>
+              {register ? "Register" : "Next"}
+            </ContainedBtn>
+          </ContentButtonItem>
+        </ContentButtonGrid>
+      </ContentGrid>
+    </ContentWrapper>
   );
 };
 

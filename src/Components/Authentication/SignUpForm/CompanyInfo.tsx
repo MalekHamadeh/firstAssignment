@@ -1,22 +1,74 @@
-import React from "react";
-import { GridContainer, GridItem, StyledInput } from "../StyledAuthentication";
+import React, { useState } from "react";
+
+import { Grid, MenuItem, Checkbox } from "@mui/material";
+
+import { StyledInput } from "../../Shared/StyledShared";
+import {
+  TermsCheckBox,
+  TermsCheckboxWrapper,
+  TermsText,
+  TermsTextWrapper,
+  TermsWrapper,
+} from "../StyledAuthentication";
 
 const CompanyInfo = () => {
+  const [industryType, setIndustryType] = useState<string>("");
+  const [nbOfEmployees, setNbOfEmpolyees] = useState<number>(0);
+
+  const handleNbOfEmployeesChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setNbOfEmpolyees(parseInt(event.target.value));
+  };
+
+  const handleSelectChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setIndustryType(event.target.value);
+  };
   return (
-    <GridContainer direction='column' gap={1}>
-      <GridItem xs={1}>
-        <StyledInput placeholder='Enter Company Name' />
-      </GridItem>
-      <GridItem xs={1}>
-        <StyledInput placeholder='Enter Company Address' />
-      </GridItem>
-      <GridItem xs={1}>
-        <StyledInput placeholder='Enter Company Phone Number' />
-      </GridItem>
-      <GridItem xs={1}>
-        <StyledInput placeholder='Enter Company Email' />
-      </GridItem>
-    </GridContainer>
+    <Grid container direction='row' gap={4} sx={{ width: "24vw" }}>
+      <Grid item xs={12}>
+        <StyledInput label='Company Name' placeholder='Enter Company Name' />
+      </Grid>
+      <Grid item xs={12}>
+        <StyledInput label='Your space will be' placeholder='Space name' />
+      </Grid>
+      <Grid item xs={12}>
+        <StyledInput
+          label='Industry'
+          value={industryType}
+          select
+          onChange={handleSelectChange}
+        >
+          <MenuItem value={10}>10</MenuItem>
+          <MenuItem value={20}>20</MenuItem>
+          <MenuItem value={30}>30</MenuItem>
+        </StyledInput>
+      </Grid>
+      <Grid item xs={12}>
+        <StyledInput
+          label='Number of employees'
+          select
+          value={nbOfEmployees}
+          onChange={handleNbOfEmployeesChange}
+        >
+          <MenuItem value={10}>10</MenuItem>
+          <MenuItem value={20}>20</MenuItem>
+          <MenuItem value={30}>30</MenuItem>
+        </StyledInput>
+      </Grid>
+      <Grid item xs={12}>
+        <TermsWrapper>
+          <TermsCheckboxWrapper>
+            <TermsCheckBox />
+          </TermsCheckboxWrapper>
+          <TermsText>
+            <TermsTextWrapper>
+              Accetto le Condizioni di utilizzo e Informativa sulla Privacy
+            </TermsTextWrapper>
+          </TermsText>
+        </TermsWrapper>
+      </Grid>
+    </Grid>
   );
 };
 
