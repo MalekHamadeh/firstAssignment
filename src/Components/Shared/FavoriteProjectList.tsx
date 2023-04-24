@@ -36,7 +36,7 @@ const FavoriteProjectList = () => {
         {projectList.map(({ name, iconColor }, index) => (
           <ProjectItem key={index}>
             <ProjectItemGrid>
-              <ProjectIcon iconColor={iconColor}>
+              <ProjectIcon iconcolor={iconColor}>
                 <ProjectNameAbb>{getProjectNameAbb(name)}</ProjectNameAbb>
               </ProjectIcon>
               <ProjectNameWrapper>

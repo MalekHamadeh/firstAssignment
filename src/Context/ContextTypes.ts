@@ -95,6 +95,7 @@ export interface HomeContextProps {
   }[];
   taskList: TaskListProps[];
   selectedContent: string;
+  members: Members[];
 
   handleSelectedContent: (selected: string) => void;
   handleTaskPriority: (priority: string) => string;
@@ -110,4 +111,11 @@ export interface TaskListProps {
   projectNameColor: string;
 }
 
+export interface Members {
+  avatar: string;
+  name: string;
+  owner: boolean;
+  email: string;
+  status: string;
+}
 //#endregion

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Grid, Divider, Typography, Button, Avatar } from "@mui/material";
+import { Grid, Divider, Typography, Button, Avatar, Chip } from "@mui/material";
 import { StyledInput } from "../../Shared/StyledShared";
 
 interface ListItemTextProps {
@@ -271,6 +271,47 @@ export const CancelButton = styled(InfoButtonBase)`
 export const SaveButton = styled(InfoButtonBase)`
   && {
     background-color: #4c84ff;
+  }
+`;
+
+//#endregion
+
+//#region Members Content
+
+export const MembersContentWrapper = styled(GridContainer)``;
+
+export const MembersTitleItem = styled(GridItem)`
+  && {
+    height: 10%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
+`;
+
+export const MembersTitle = styled(Typography)`
+  && {
+    font-family: "Rubik";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 28px;
+    color: #31394e;
+  }
+`;
+
+export const MembersContentGrid = styled(GridItem)`
+  height: 80%;
+  width: 100%;
+`;
+
+export const MembersButtonItem = styled(GridItem)`
+  && {
+    height: 10%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
   }
 `;
 

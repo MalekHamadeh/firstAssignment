@@ -9,6 +9,8 @@ import Task from "../Images/Icons/TaskIcons/task.svg";
 import Bug from "../Images/Icons/TaskIcons/bug.svg";
 import Macro from "../Images/Icons/TaskIcons/macro.svg";
 
+import Avatar from "../Images/Pictures/avatar.svg";
+
 import { HomeContextProps, HomeProviderProps } from "./ContextTypes";
 
 const HomeContext = createContext<HomeContextProps>({} as HomeContextProps);
@@ -108,6 +110,51 @@ export const HomeProvider = ({ children }: HomeProviderProps) => {
     },
   ]);
 
+  const [members, setMembers] = useState([
+    {
+      avatar: Avatar,
+      name: "Marino Panariello",
+      owner: true,
+      email: "marino.panariello@lastingdynamics.com",
+      status: "Active",
+    },
+    {
+      avatar: Avatar,
+      name: "Brandon Watson",
+      owner: false,
+      email: "max.hoffman@example.com",
+      status: "Active",
+    },
+    {
+      avatar: Avatar,
+      name: "Norma Cooper",
+      owner: false,
+      email: "darrell.duncan@example.com",
+      status: "Active",
+    },
+    {
+      avatar: Avatar,
+      name: "Jerome Pena",
+      owner: false,
+      email: "wesley.white@example.com",
+      status: "Inactive",
+    },
+    {
+      avatar: Avatar,
+      name: "Arlene Steward",
+      owner: false,
+      email: "alberto.ward@example.com",
+      status: "Inactive",
+    },
+    {
+      avatar: Avatar,
+      name: "Max Flores",
+      owner: false,
+      email: "logan.hopkins@example.com",
+      status: "Active",
+    },
+  ]);
+
   const handleTaskPriority = (string: string) => {
     switch (string) {
       case "urgent":
@@ -148,6 +195,7 @@ export const HomeProvider = ({ children }: HomeProviderProps) => {
         projectList,
         taskList,
         selectedContent,
+        members,
         handleTaskPriority,
         handleTaskIcons,
         handleSelectedContent,

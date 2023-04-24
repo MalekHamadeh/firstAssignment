@@ -71,7 +71,7 @@ const CompressedTasks = ({ title }: CompressedTasksProps) => {
                 </DescListItem>
                 <ProjectListItem>
                   <ItemProject
-                    projectColor={projectNameColor}
+                    projectcolor={projectNameColor}
                     label={projectName}
                   />
                 </ProjectListItem>

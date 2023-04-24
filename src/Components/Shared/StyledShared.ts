@@ -10,7 +10,7 @@ import {
 import styled from "styled-components";
 
 interface ProjectIconBC {
-  iconColor: string;
+  iconcolor: string;
 }
 
 interface TitleChip {
@@ -18,7 +18,7 @@ interface TitleChip {
 }
 
 interface ItemProject {
-  projectColor: string;
+  projectcolor: string;
 }
 
 const GridContainer = styled(Grid).attrs({
@@ -103,7 +103,7 @@ export const ProjectItemGrid = styled(GridContainer).attrs({
 
 export const ProjectIcon = styled(GridItem)<ProjectIconBC>`
   && {
-    background-color: ${({ iconColor }) => iconColor};
+    background-color: ${({ iconcolor }) => iconcolor};
     height: 60%;
     width: 80%;
     display: flex;
@@ -361,7 +361,7 @@ export const ItemProject = styled(Chip).attrs({
   size: "small",
 })<ItemProject>`
   && {
-    background-color: ${({ projectColor }) => projectColor};
+    background-color: ${({ projectcolor }) => projectcolor};
 
     & .MuiChip-label {
       font-family: "Rubik";
@@ -372,6 +372,174 @@ export const ItemProject = styled(Chip).attrs({
       text-align: center;
       color: #ffffff;
     }
+  }
+`;
+
+//#endregion
+
+//#region Styling Members Table
+interface ContentListItemProps {
+  disabled?: boolean;
+}
+
+interface ListStatusProps {
+  status: string;
+}
+
+export const MembersTableWrapper = styled(GridContainer)`
+  && {
+    height: 60%;
+  }
+`;
+
+export const ContentTitleGrid = styled(ItemNestedGrid)`
+  && {
+    width: 100%;
+    height: 20%;
+    display: flex;
+    align-items: center;
+  }
+`;
+
+export const ContentTitleItem = styled(GridItem)`
+  && {
+    width: 30%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+`;
+
+export const ContentTitleStatus = styled(ContentTitleItem)`
+  && {
+    display: flex;
+    justify-content: center;
+  }
+`;
+
+export const ContentTitle = styled(Typography)`
+  && {
+    font-family: "Rubik";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+    color: rgba(49, 57, 78, 0.5);
+    text-transform: uppercase;
+  }
+`;
+
+export const ContentList = styled(ItemNestedGrid).attrs({})`
+  && {
+    width: 100%;
+    height: 80%;
+    padding-top: 1rem;
+  }
+`;
+
+export const ContentListItem = styled(ItemNestedGrid)<ContentListItemProps>`
+  && {
+    width: 100%;
+    height: 20%;
+    background-color: ${({ disabled }) =>
+      disabled ? "#EAEBED" : "transparent"};
+    opacity: ${({ disabled }) => (disabled ? 0.95 : 1)};
+  }
+`;
+
+export const ListItemName = styled(GridItem)`
+  && {
+    width: 30%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 3rem;
+  }
+`;
+
+export const MemberAvatar = styled.img`
+  height: 60%;
+  width: 10%;
+`;
+
+export const MemberName = styled(Typography)`
+  && {
+    font-family: "Rubik";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    color: #31394e;
+    width: 30%;
+  }
+`;
+
+export const MemberOwner = styled(Chip)`
+  && {
+    height: 55%;
+    width: 23%;
+    border-radius: 0.5rem;
+    color: #29c293;
+    background-color: #bfeddf;
+    font-size: 14px;
+    font-family: "Rubik";
+    text-transform: uppercase;
+    font-weight: 400;
+    text-align: center;
+  }
+`;
+
+export const ListItemEmail = styled(GridItem)`
+  && {
+    width: 30%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+`;
+
+export const ListEmail = styled(Typography)`
+  && {
+    font-family: "Rubik";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    color: #838895;
+  }
+`;
+
+export const ListItemStatus = styled(GridItem)`
+  && {
+    width: 30%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+`;
+
+export const ListStatus = styled(Typography)<ListStatusProps>`
+  && {
+    font-family: "Rubik";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    text-align: center;
+    color: ${({ status }) => (status === "Active" ? "#29C293" : "#FD5461")};
+  }
+`;
+
+export const ListMore = styled(GridItem)`
+  && {
+    width: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: #838895;
   }
 `;
 
