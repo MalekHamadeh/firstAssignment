@@ -76,7 +76,7 @@ export const StyledHeroBody = styled.div`
   width: 100%;
   display: flex;
   z-index: 1;
-  justify-content: flex-end;
+  justify-content: center;
 `;
 
 export const StyledDivider = styled(Divider).attrs({

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import {
   GoToProjectButton,
@@ -15,15 +15,23 @@ import {
 import backIcon from "../../../../Images/Icons/backIcon.svg";
 
 import CompressedTasks from "../../../Shared/CompressedTasks";
+import DrawerContext from "../../../../Context/DrawerContext";
+
+import Objectives from "../../Objectives/Objectives";
 
 const Right = () => {
+  const { handleChanges } = useContext(DrawerContext);
+  const GoToObjectives = () => {
+    handleChanges("Objectives", <Objectives />);
+  };
+
   return (
     <RightWrapper>
       <RightWrapperTitle>
         <TitleContentItem>
           <RightProjectTitle>Marketing</RightProjectTitle>
         </TitleContentItem>
-        <TitleContentItem>
+        <TitleContentItem onClick={GoToObjectives}>
           <GoToProjectButton>
             Go to Project
             <GoToIcon src={backIcon} />

@@ -21,6 +21,7 @@ const HeroSection = () => {
   const [shouldShowIcon, setShouldShowIcon] = useState(true);
   const { data } = useContext(DrawerContext);
   const { title, component } = data;
+
   return (
     <StyledHeroWrapper>
       <StyledHeroHeader>
