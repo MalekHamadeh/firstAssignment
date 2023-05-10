@@ -6,7 +6,7 @@ import ForgotPassword from "./ForgotPassword";
 
 import { AuthenticationWrapper } from "./StyledAuthentication";
 
-import AuthenticationContext from "../../Context/AuthenticationContext";
+import AuthenticationContext from "../../Context/AuthenticationContext/UserContext";
 
 const AuthenticationComponent = () => {
   const { screen } = useContext(AuthenticationContext);

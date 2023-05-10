@@ -5,7 +5,7 @@ import CompanyInformation from "./SignUpForm/CompanyInfo";
 import CheckEmail from "./SignUpForm/CheckEmail";
 
 import NewPassword from "./PasswordForm/NewPassword";
-import AuthenticationContext from "../../Context/AuthenticationContext";
+import AuthenticationContext from "../../Context/AuthenticationContext/UserContext";
 
 const FormInputs = () => {
   const { screen, step } = useContext(AuthenticationContext);

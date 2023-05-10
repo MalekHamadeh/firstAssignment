@@ -19,8 +19,8 @@ import {
 import FormInputs from "./FormInputs";
 import Alert from "../Shared/Alert";
 
-import AuthenticationContext from "../../Context/AuthenticationContext";
-import { AuthenticationContextProps } from "../../Context/ContextTypes";
+import UserContext from "../../Context/AuthenticationContext/UserContext";
+import { UserContextProps } from "../../Context/ContextTypes";
 
 const ForgotPassword = () => {
   const {
@@ -31,7 +31,7 @@ const ForgotPassword = () => {
     setIsSuccessfulPassword,
     setStep,
     handleScreens,
-  }: AuthenticationContextProps = useContext(AuthenticationContext);
+  }: UserContextProps = useContext(UserContext);
 
   const handleNext = () => {
     if (step !== 1) {

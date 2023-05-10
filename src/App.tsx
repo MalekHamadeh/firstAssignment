@@ -4,7 +4,7 @@ import Authentication from "./Layout/Authentication";
 import Home from "./Layout/Home";
 import { DrawerProvider } from "./Context/DrawerContext";
 import "./App.css";
-import { AuthenticationProvider } from "./Context/AuthenticationContext";
+import { UserProvider } from "./Context/AuthenticationContext/UserState";
 
 function App() {
   return (
@@ -13,9 +13,9 @@ function App() {
         <Route
           path='/'
           element={
-            <AuthenticationProvider>
+            <UserProvider>
               <Authentication />
-            </AuthenticationProvider>
+            </UserProvider>
           }
         />
         <Route path='/home' element={<Home />} />

@@ -19,7 +19,7 @@ import {
 
 import Alert from "../Shared/Alert";
 
-import AuthenticationContext from "../../Context/AuthenticationContext";
+import UserContext from "../../Context/AuthenticationContext/UserContext";
 
 const Login = () => {
   const emailRef = useRef<HTMLInputElement | null>(null);
@@ -27,6 +27,7 @@ const Login = () => {
   const Navigate = useNavigate();
 
   const {
+    canLogin,
     isSuccessfulSignUp,
     isSuccessfulPassword,
     isError,
@@ -34,7 +35,8 @@ const Login = () => {
     setIsSuccessfulPassword,
     setIsSuccessfulSignUp,
     setIsError,
-  } = useContext(AuthenticationContext);
+    LoginUser,
+  } = useContext(UserContext);
 
   const handleEmail = () => {
     const email = emailRef.current?.value;
@@ -63,10 +65,20 @@ const Login = () => {
     }
   }, [isSuccessfulPassword, isSuccessfulSignUp, isError]);
 
-  const canLogin = () => {
-    emailRef.current?.value !== "" && passwordRef.current?.value !== ""
-      ? Navigate("/home")
-      : setIsError(true);
+  const userLogin = async () => {
+    if (emailRef.current?.value !== "" && passwordRef.current?.value !== "") {
+      try {
+        let user = await LoginUser(
+          emailRef.current?.value || "",
+          passwordRef.current?.value || ""
+        );
+        if (user) {
+          Navigate("/home");
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
   };
 
   const goToSignUp = () => {
@@ -116,7 +128,7 @@ const Login = () => {
         </ContentInputGrid>
         <ContentButtonGrid>
           <ContentButtonItem>
-            <ContainedBtn variant='contained' onClick={canLogin}>
+            <ContainedBtn variant='contained' onClick={userLogin}>
               Login
             </ContainedBtn>
           </ContentButtonItem>

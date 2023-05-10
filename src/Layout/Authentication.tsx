@@ -12,7 +12,7 @@ import {
 import logo from "../Images/Logo/roundRushLogo.svg";
 import AuthenticationComponent from "../Components/Authentication/AuthenticationComponent";
 import { useContext } from "react";
-import AuthenticationContext from "../Context/AuthenticationContext";
+import AuthenticationContext from "../Context/AuthenticationContext/UserContext";
 
 const Authentication = () => {
   const { screen } = useContext(AuthenticationContext);

@@ -1,19 +1,10 @@
-import React, { createContext, useState } from "react";
+import { useState, useReducer } from "react";
+import { PasswordData, SignUpData, UserProviderProps } from "../ContextTypes";
+import AuthenticationContext from "./UserContext";
+import ApiService from "../../Utils/ApiCalls";
+import { IUSERSTATE, USER_INTERACTIONS, UserReducer } from "./UserReducer";
 
-import {
-  AuthenticationContextProps,
-  AuthenticationProviderProps,
-  PasswordData,
-  SignUpData,
-} from "./ContextTypes";
-
-const AuthenticationContext = createContext<AuthenticationContextProps>({
-  screen: "Login",
-} as AuthenticationContextProps);
-
-export const AuthenticationProvider = ({
-  children,
-}: AuthenticationProviderProps) => {
+export const UserProvider = ({ children }: UserProviderProps) => {
   const [screen, setScreen] = useState<string>("Login");
 
   const [isSuccessfulSignUp, setIsSuccessfulSignUp] = useState(false);
@@ -50,6 +41,19 @@ export const AuthenticationProvider = ({
     "Enter your details below",
     "Please enter your new password",
   ];
+
+  const initialState: IUSERSTATE = {
+    email: "",
+    userName: "",
+    success: false,
+    successMessage: "",
+    error: false,
+    errorMessage: "",
+    canLogin: false,
+  };
+
+  const [state, dispatch] = useReducer(UserReducer, initialState);
+
   const { ...requiredDataSignUp } = signUpData;
 
   const canContinueSignUp =
@@ -66,13 +70,42 @@ export const AuthenticationProvider = ({
     setScreen(screen);
   };
 
+  const LoginUser = async (email: string, password: string) => {
+    try {
+      const request = await ApiService.loginUser(email, password);
+
+      if (request.status === 200) {
+        const { userName } = request.data.data;
+
+        dispatch({
+          type: USER_INTERACTIONS.LOGIN_USER,
+          payload: {
+            userName,
+            canLogin: true,
+            error: false,
+          },
+        });
+      }
+      return request;
+    } catch (error: any) {
+      dispatch({
+        type: USER_INTERACTIONS.REQUEST_ERROR,
+        payload: {
+          error: true,
+          errorMessage: error.message,
+        },
+      });
+    }
+  };
+
   return (
     <AuthenticationContext.Provider
       value={{
         screen,
+        canLogin: state.canLogin,
         isSuccessfulSignUp,
         isSuccessfulPassword,
-        isError,
+        isError: state.error,
         showAlert,
         step,
         signUpTitle,
@@ -87,6 +120,7 @@ export const AuthenticationProvider = ({
         setShowAlert,
         setStep,
         setSignUpData,
+        LoginUser,
       }}
     >
       {children}
@@ -94,4 +128,4 @@ export const AuthenticationProvider = ({
   );
 };
 
-export default AuthenticationContext;
+export default UserProvider;

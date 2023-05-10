@@ -1,11 +1,12 @@
 //#region Authentication Context Types
 
-export interface AuthenticationProviderProps {
+export interface UserProviderProps {
   children: React.ReactNode;
 }
 
-export interface AuthenticationContextProps {
+export interface UserContextProps {
   screen: string | undefined;
+  canLogin: boolean;
   isSuccessfulSignUp: boolean;
   isSuccessfulPassword: boolean;
   isError: boolean;
@@ -23,6 +24,7 @@ export interface AuthenticationContextProps {
   setShowAlert: (showAlert: boolean) => void;
   setStep: (step: number) => void;
   setSignUpData: (signUpData: SignUpData) => void;
+  LoginUser: (emaiil: string, password: string) => {};
 }
 
 export interface SignUpData {

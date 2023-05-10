@@ -11,6 +11,9 @@ const config: Configuration = {
   },
   resolve: {
     extensions: [".js", ".jsx", ".ts", ".tsx"],
+    fallback: {
+      http: require.resolve("false"),
+    },
   },
   module: {
     rules: [

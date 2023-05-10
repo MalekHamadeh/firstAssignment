@@ -15,8 +15,8 @@ import {
   TitleItem,
 } from "./StyledAuthentication";
 
-import { AuthenticationContextProps } from "../../Context/ContextTypes";
-import AuthenticationContext from "../../Context/AuthenticationContext";
+import { UserContextProps } from "../../Context/ContextTypes";
+import UserContext from "../../Context/AuthenticationContext/UserContext";
 
 const Signup = () => {
   const {
@@ -25,7 +25,7 @@ const Signup = () => {
     setStep,
     setIsSuccessfulSignUp,
     handleScreens,
-  }: AuthenticationContextProps = useContext(AuthenticationContext);
+  }: UserContextProps = useContext(UserContext);
 
   const [register, shouldRegister] = useState<boolean>(false);
 
