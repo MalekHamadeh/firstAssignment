@@ -1,5 +1,6 @@
 export enum USER_INTERACTIONS {
   LOGIN_USER = "LOGIN_USER",
+  LOGIN_USER_ERROR = "LOGIN_USER_ERROR",
   SIGN_UP_USER = "SIGN_UP_USER",
   CHECK_USER_EMAIL = "CHECK_USER_EMAIL",
   REQUEST_ERROR = "REQUEST_ERROR",
@@ -10,14 +11,25 @@ export const UserReducer = (
   action: { type: USER_INTERACTIONS; payload: any }
 ): IUSERSTATE => {
   const { type, payload } = action;
-  const { LOGIN_USER, SIGN_UP_USER, CHECK_USER_EMAIL, REQUEST_ERROR } =
-    USER_INTERACTIONS;
+  const {
+    LOGIN_USER,
+    LOGIN_USER_ERROR,
+    SIGN_UP_USER,
+    CHECK_USER_EMAIL,
+    REQUEST_ERROR,
+  } = USER_INTERACTIONS;
   switch (type) {
     case LOGIN_USER:
       return {
         ...state,
         userName: payload.userName,
-        canLogin: payload.canLogin,
+        canLogin: true,
+      };
+
+    case LOGIN_USER_ERROR:
+      return {
+        ...state,
+        canLogin: false,
         error: payload.error,
       };
 

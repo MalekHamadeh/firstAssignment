@@ -8,7 +8,12 @@ interface AlertProps {
   isError?: boolean;
 }
 
-const Alert = ({ message, isSuccess = false, isError = false }: AlertProps) => {
+const Alert = ({
+  message,
+
+  isSuccess = false,
+  isError = false,
+}: AlertProps) => {
   const [showAlert, shouldShowAlert] = useState(false);
 
   useEffect(() => {
@@ -16,8 +21,7 @@ const Alert = ({ message, isSuccess = false, isError = false }: AlertProps) => {
       shouldShowAlert(true);
       const timer = setTimeout(() => {
         shouldShowAlert(false);
-        console.log("here");
-      }, 2000);
+      }, 4000);
     }
   }, [isSuccess, isError]);
 

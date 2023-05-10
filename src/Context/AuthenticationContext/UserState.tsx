@@ -73,20 +73,26 @@ export const UserProvider = ({ children }: UserProviderProps) => {
   const LoginUser = async (email: string, password: string) => {
     try {
       const request = await ApiService.loginUser(email, password);
+      const { userName } = request.data.data;
+      const { success } = request.data.success;
 
       if (request.status === 200) {
-        const { userName } = request.data.data;
-
         dispatch({
           type: USER_INTERACTIONS.LOGIN_USER,
           payload: {
             userName,
-            canLogin: true,
             error: false,
           },
         });
+      } else {
+        dispatch({
+          type: USER_INTERACTIONS.LOGIN_USER_ERROR,
+          payload: {
+            error: request.data.error,
+          },
+        });
       }
-      return request;
+      return request.data.success;
     } catch (error: any) {
       dispatch({
         type: USER_INTERACTIONS.REQUEST_ERROR,

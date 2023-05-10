@@ -81,6 +81,7 @@ const CompressedTasks = ({ title }: CompressedTasksProps) => {
                   width: "100%",
                   height: "1px",
                   backgroundColor: "#F4F6FC",
+                  key: index,
                   visibility:
                     index === taskList.length - 1 ? "hidden" : "visible",
                 }}

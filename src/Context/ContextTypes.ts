@@ -24,7 +24,7 @@ export interface UserContextProps {
   setShowAlert: (showAlert: boolean) => void;
   setStep: (step: number) => void;
   setSignUpData: (signUpData: SignUpData) => void;
-  LoginUser: (emaiil: string, password: string) => {};
+  LoginUser: (email: string, password: string) => {};
 }
 
 export interface SignUpData {
